@@ -257,3 +257,6 @@ OPEN BLOCKERS:
    specialist's own state file to stay current after every stage/page) so
    the project can be resumed in a fresh session at any checkpoint without
    replaying the whole conversation.
+7. Never conclude a tool, site, or capability is blocked or unavailable from
+   assumption — actually attempt it and read the real result before telling
+   the user it doesn't work or falling back to a manual workaround.

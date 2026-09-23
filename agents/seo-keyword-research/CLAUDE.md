@@ -14,6 +14,13 @@ This repository is a modular SEO keyword-research system. Every specialist agent
 8. Preserve source attribution and research dates.
 9. Every agent validates inputs and outputs before completion.
 10. Each agent owns only its assigned stage.
+11. Never conclude a tool, site, or capability is blocked, unavailable, or
+    off-limits from assumption. Actually attempt the call/action (browser
+    navigation, MCP tool call, file read) and read the real result before
+    telling the user it doesn't work or falling back to asking them to do
+    it manually. Only fall back to a manual path after an actual attempt
+    fails or a real check confirms it — not from a guess about what's
+    likely to be blocked.
 
 ## Semrush policy
 
@@ -23,11 +30,11 @@ Whenever Semrush data is needed, ask:
 
 > Should I access Semrush via MCP/API, or should I give you the manual Semrush steps and have you bring the data back?
 
-Allowed paths are actual Semrush MCP/API access or manual Semrush instructions plus user-provided exports/data. Never claim account access unless a tool result confirms it.
+Allowed paths are actual Semrush MCP/API access or manual Semrush instructions plus user-provided exports/data. Never claim account access unless a tool result confirms it — and never assume MCP/API access is *missing* either; check for the actual Semrush tools before telling the user it isn't available.
 
 ## Google policy
 
-Use the available internal browser for Google Keyword Planner, Google Trends, autocomplete, PAA, Related Searches, manual SERP analysis, and local-search observations.
+Use the internal browser for Google Keyword Planner, Google Trends, autocomplete, PAA, Related Searches, manual SERP analysis, and local-search observations. Before concluding the browser can't reach a site or perform an action, actually try it once — don't assume a login wall, region block, or bot check exists without seeing it happen.
 
 Before every Google Keyword Planner keyword-entry batch verify **location, language, and currency**. Multi-keyword input may be newline- or comma-separated. Scroll/paginate result rows as needed.
 

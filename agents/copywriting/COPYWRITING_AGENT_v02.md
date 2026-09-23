@@ -808,6 +808,13 @@ Example:
 
 No external action is allowed until the user approves it.
 
+This permission gate governs whether to *use* an external tool — it is not
+license to assume a tool doesn't exist or won't work. Once permission is
+given, actually attempt the browser navigation or tool call and read the
+real result before telling the user it's blocked, unavailable, or requires
+a different approach. Don't fall back to "you'll need to do this manually"
+from a guess.
+
 ------------------------------------------------------------------------
 
 # 10. GEOGRAPHIC / TARGET-MARKET RULE

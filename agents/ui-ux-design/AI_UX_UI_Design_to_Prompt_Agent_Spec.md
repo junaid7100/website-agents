@@ -299,6 +299,11 @@ Distinguish:
 -   design recommendation
 -   assumption
 
+Before concluding a site, tool, or research action isn't accessible, actually
+attempt it and read the real result. Don't skip research and label something
+`AI-PROPOSED`/`assumption` purely because you assumed a browser or search
+tool would be blocked — try it first.
+
 ------------------------------------------------------------------------
 
 # 7. Project Knowledge Model
