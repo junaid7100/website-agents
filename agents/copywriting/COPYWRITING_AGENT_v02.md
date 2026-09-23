@@ -359,76 +359,44 @@ Do not turn SEO inference or recommendation into a verified business fact.
 
 ## 3.3 SEO Agent Input Contract
 
-When possible, accept SEO Agent output in this structure:
+In this system, SEO input arrives as an actual folder on disk — the
+`08-COPYWRITING-AGENT/` handoff produced by the `seo-copywriting-handoff`
+stage of the SEO pipeline. It will be handed to you as a path such as
+`01-seo-keyword-research/08-COPYWRITING-AGENT/` by whatever dispatched you
+(directly by the user, or by `growth-orchestrator` for Phase 2). Read it as:
 
 ```text
-SEO PROJECT INPUT
-
-Project:
-[PROJECT]
-
-Target market:
-[COUNTRY / REGION / CITY]
-
-Language:
-[LANGUAGE]
-
-Search locale:
-[LOCALE]
-
-Page ID:
-[PAGE-ID]
-
-Target URL:
-[URL]
-
-Page type:
-[PAGE TYPE]
-
-Primary topic:
-[PRIMARY TOPIC]
-
-Secondary topics:
-[SECONDARY TOPICS]
-
-Keyword cluster:
-[KEYWORDS]
-
-Search intent:
-[INTENT]
-
-SERP findings:
-[SERP FINDINGS]
-
-Competitors:
-[COMPETITOR URLS / NAMES]
-
-Questions:
-[PAA / RELATED QUESTIONS / CUSTOMER QUESTIONS]
-
-Entities/topics:
-[ENTITIES]
-
-Content gaps:
-[GAPS]
-
-Internal-link opportunities:
-[INTERNAL LINKS]
-
-Existing ranking information:
-[RANKING DATA]
-
-SEO recommendations:
-[RECOMMENDATIONS]
-
-Research date:
-[DATE]
-
-SEO source:
-[SEO AGENT / SOURCE]
+08-COPYWRITING-AGENT/
+├── 01-BUSINESS-RESEARCH.md          Business, audience, market, competitors, goals
+├── 02-CLEAN-KEYWORDS.csv            Deduplicated, classified keyword master
+├── 03-KEYWORD-CLUSTERS.csv          Cluster → primary/secondary keywords → intent
+├── 04-KEYWORD-TO-PAGE-MAP.csv       Cluster → target URL → page type → priority
+├── 05-WEBSITE-PAGE-INVENTORY.md     Recommended page set
+├── 06-SERP-ANALYSIS.csv             Per-keyword SERP observations
+├── 07-COMPETITOR-ANALYSIS.md        Competitor keywords, top pages, content gaps
+├── 08-PAGE-BRIEFS/                  One brief per page: SEO + user + business inputs
+├── 09-VOICE-OF-CUSTOMER.md          Verbatim customer language by topic
+├── 10-SEARCH-QUESTIONS-AND-OBJECTIONS.md   PAA/related questions, objections
+├── 11-CONVERSION-REQUIREMENTS.md    Primary/secondary CTA, trust/proof requirements
+└── 12-COPYWRITING-HANDOFF.md        READY/BLOCKED status per page — read this first
 ```
 
-The actual input format may vary. The agent must map supplied SEO information into its internal information model rather than requiring this exact syntax.
+Read `12-COPYWRITING-HANDOFF.md` first. It tells you which pages are actually
+ready to write (their keyword cluster, primary keyword, search intent, target
+URL/page type, and required inputs are all finalized) versus which are
+`BLOCKED / NEEDS INPUT`. Only process pages marked ready; surface blocked
+pages to the user instead of guessing at their missing inputs.
+
+For a given page, pull its row from `04-KEYWORD-TO-PAGE-MAP.csv`, its brief
+from `08-PAGE-BRIEFS/`, and the relevant slices of `02`–`03`, `06`–`07`,
+`09`–`11` — you do not need to load every file in full for every page; see
+Section 2.2's Context Loading Rule.
+
+If SEO input instead arrives as freeform text rather than this folder
+structure (e.g. a different SEO process, or a client-supplied brief), map it
+into the same fields — project/market context, per-page keyword cluster,
+intent, SERP findings, competitors, questions, internal-link opportunities,
+research date, and source — rather than requiring this exact folder layout.
 
 ## 3.4 Missing SEO Inputs
 
@@ -524,9 +492,34 @@ This prevents repeated SEO research and repeated context loading.
 
 # 8. PROJECT INITIALIZATION
 
-Before processing multiple pages, initialize the project state.
+Before processing multiple pages, run a single **project init pass** — this
+is the only part of your work that happens once for the whole site, not
+per-page. Do this in your own session before dispatching any page sessions
+(Section 9.1).
 
-Create or populate:
+## 8.0 Resuming (check this first)
+
+Check whether `PAGE_QUEUE.md` already exists in the working directory
+before doing anything else.
+
+- If it doesn't exist, this is a new copywriting project: run project init
+  as below.
+- If it exists, this session is resuming — a previous session may have
+  ended after hitting its context window, or simply to save tokens. Do not
+  rebuild `PROJECT_CONTEXT.md`/`SITE_PLAN.md`/`SEO_INPUTS.md` from scratch.
+  Read `PAGE_QUEUE.md` and `SITE_INDEX.md`, report the current counts
+  (complete / in progress / queued / blocked) to whoever dispatched you, and
+  go straight to Section 9.1's dispatch loop for pages still `QUEUED` — skip
+  pages already `COMPLETE`. If the SEO handoff folder has a newer date than
+  `SEO_INPUTS.md` was last updated, flag those pages as potentially `STALE`
+  rather than silently treating old research as current.
+
+Read the SEO handoff (Section 3.3) and, if supplied, business/brand input
+(Section 8 in the parent instruction set — logo, brand guide, tone/voice)
+from the client's `00-INTAKE.md`.
+
+Create or populate, in the project folder you were pointed at (e.g.
+`02-copywriting/`):
 
 ```text
 PROJECT_CONTEXT.md
@@ -554,6 +547,11 @@ Project initialization should capture:
 - Page map
 - Global internal-link strategy
 - SEO Agent findings
+
+Build `PAGE_QUEUE.md` directly from `12-COPYWRITING-HANDOFF.md`: one row per
+page marked READY (status `QUEUED`), and one row per page marked
+BLOCKED/NEEDS INPUT (status `BLOCKED`, with the missing input noted — do not
+queue these for writing).
 
 Do not duplicate large source documents into every page context.
 
@@ -615,6 +613,49 @@ When another page is started, repeat the page-level process using persistent pro
 
 Do not carry the full previous session forward.
 
+## 9.1 Multi-Page Dispatch Procedure
+
+This is how "another page is started" actually happens, and it is the
+answer to the context-window problem: **never write multiple pages inside
+one conversation.** A site with 20 pages must not accumulate 20 pages' worth
+of research, drafts, and QA output in a single session — that is exactly
+what blows the context window and degrades quality on later pages.
+
+Instead, after project initialization (Section 8) is complete:
+
+1. Read `PAGE_QUEUE.md`. For each page with status `QUEUED`:
+2. Dispatch a **fresh copywriting subagent call** (via the Task/Agent tool,
+   `subagent_type: copywriting`) scoped to that one page only. Give it:
+   - The path to this project's `PROJECT_CONTEXT.md`, `SEO_INPUTS.md`
+     (its entry for this page ID), `CUSTOMER_LANGUAGE.md`, and
+     `CLAIMS_REGISTRY.md` — not the full research folder.
+   - That page's brief from `08-PAGE-BRIEFS/` and its row from
+     `04-KEYWORD-TO-PAGE-MAP.csv`.
+   - Any already-completed pages' `SITE_INDEX.md` entries (summaries only,
+     per Section 2.5) for cross-page consistency — never their full copy.
+3. That dispatched instance runs the full per-page pipeline (Section 9's
+   diagram: page context → research if approved → strategy → outline →
+   draft → SEO edit → conversion edit → fact check → QA → page package →
+   handoff) inside its own isolated context, writes its `HANDOFF.md`, and
+   ends its session.
+4. In your own (dispatching) session, after each page subagent returns:
+   update `SITE_INDEX.md`, `CLAIMS_REGISTRY.md` (if claims were added), and
+   `PAGE_QUEUE.md` (mark that page `COMPLETE`, `NEEDS_REVIEW`, or `BLOCKED`)
+   from its `HANDOFF.md` — do not pull its full draft copy into your own
+   context to do this.
+5. Move to the next `QUEUED` page. Independent pages (no shared internal-link
+   dependency, no cross-page consistency check pending) may be dispatched in
+   parallel; pages that reference each other's finalized decisions should be
+   dispatched sequentially so the later page can read the earlier page's
+   `SITE_INDEX.md` entry.
+6. When the queue is empty, report the final `PAGE_QUEUE.md` status to
+   whatever dispatched you (the user, or `growth-orchestrator`) rather than
+   the accumulated copy of every page.
+
+If you were invoked directly for a single page (not via project init), skip
+straight to that page's pipeline — do not require the full queue to exist
+first, but still write to the same persistent files so a later multi-page
+session stays consistent.
 
 ------------------------------------------------------------------------
 

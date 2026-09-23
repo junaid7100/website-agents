@@ -19,6 +19,26 @@ User/client information, domain, existing SEO data if available, known competito
 - `00-ORCHESTRATOR/BUSINESS-BRIEF.md`
 - `00-ORCHESTRATOR/RESEARCH-PLAN.md`
 
+## Resuming (check this first)
+
+Before collecting anything, check whether `00-ORCHESTRATOR/PROJECT-MANIFEST.md`
+already exists in the working directory.
+
+- If it doesn't exist, this is a new SEO research project: proceed with the
+  Procedure below.
+- If it exists, read its **Stage status** table and **Current state** block
+  instead of restarting. Report the current state to the user in one line
+  (e.g. "Resuming — stages 00-01 complete, 02/03/04 in progress"), then jump
+  straight into Pipeline dispatch at the first stage whose status is not
+  `COMPLETE`. Do not re-collect the business brief or re-present the
+  research plan if `BUSINESS-BRIEF.md` and `RESEARCH-PLAN.md` already exist
+  and stage 00 is marked `COMPLETE` — this is exactly how a new session
+  (started to save tokens or because the last one hit its context window)
+  continues without replaying prior work.
+- If a stage is marked `BLOCKED`, do not silently skip it — surface the
+  recorded blocker to the user before deciding whether to retry it or wait
+  for the missing input.
+
 ## Procedure
 
 1. Collect business name, domain, business description, products/services, highest-value offers, locations, countries, languages, audiences, customer problems/goals, differentiators, CTAs, and excluded offers.
