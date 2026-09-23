@@ -100,6 +100,31 @@ Before every Google Keyword Planner keyword-entry batch verify **location, langu
 
 When testing autocomplete, clear/remove the previous keyword before entering the next one.
 
+### Keyword Planner extraction without download
+
+Apply the same approach as Semrush browser extraction. Do not rely on
+Keyword Planner's Download/export, which lands in the user's Downloads
+folder, or on clipboard copy:
+
+1. **Filter first; capture only what the work needs.** After the location,
+   language, and currency checks, apply Keyword Planner filters (keyword
+   text include/exclude, monthly search range, competition, brand/non-brand
+   exclusions, ideas vs. supplied seeds) so only relevant rows are shown.
+   Record the filters and sort. Never pull the full idea list by default.
+2. Read the rendered table (`get_page_text` / `read_page`), scrolling or
+   paginating the filtered results, and write rows straight into
+   `02-GOOGLE-RESEARCH/keyword-planner.csv` in the project. Save after each
+   batch and dedupe on keyword.
+3. Verify captured rows against the result count shown, log captured vs.
+   skipped, and never write a value not seen on screen (ranges such as
+   "1K-10K" are recorded as shown, not converted to exact numbers).
+4. Checkpoint with the user after each seed batch: report rows saved and
+   filters used, then continue when told.
+5. If the table cannot be read or access is blocked after a real attempt,
+   tell the user the exact filters and target file name; the user saves the
+   file into `02-GOOGLE-RESEARCH/` or attaches it and says "done". Never
+   browse or request access to Downloads.
+
 ## Tool roles by stage (Semrush vs Google vs first-party)
 
 Each tool has a defined role per stage. Semrush is access-gated by the

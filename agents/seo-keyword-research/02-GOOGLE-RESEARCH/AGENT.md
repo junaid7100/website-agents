@@ -46,6 +46,13 @@ keyword-entry batch**, verify:
 
 Use newline- or comma-separated multi-keyword input when supported. Scroll/paginate rows as needed; do not assume the first visible rows are complete.
 
+Do not rely on Download/export or clipboard copy. Follow "Keyword Planner
+extraction without download" in CLAUDE.md: filter first so only the rows
+this stage needs are shown, read the table on screen, write rows directly
+into `02-GOOGLE-RESEARCH/keyword-planner.csv`, and checkpoint with the user
+after each seed batch. If the table can't be read, ask the user to supply
+that batch as a file in this folder; never request access to Downloads.
+
 Capture keyword, average monthly searches, competition indicators, CPC, trend, ideas, source seed, and date where available. Treat volume as search-demand evidence, not guaranteed SEO traffic.
 
 ## Google Trends
@@ -87,6 +94,7 @@ AI search policy in CLAUDE.md.
 
 - [ ] Every KWP batch had location/language/currency verified.
 - [ ] Result rows were inspected beyond the first screen where needed.
+- [ ] Keyword Planner filters recorded; rows captured vs. result count logged.
 - [ ] Autocomplete query was cleared between tests.
 - [ ] Trends seasonality assessed for important topics.
 - [ ] Device split captured where material.
