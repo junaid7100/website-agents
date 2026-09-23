@@ -23,6 +23,7 @@ Use Google-based research to expand, validate, and contextualize the seed univer
 - `02-GOOGLE-RESEARCH/paa.csv`
 - `02-GOOGLE-RESEARCH/related-searches.csv`
 - `02-GOOGLE-RESEARCH/serp-observations.csv`
+- `02-GOOGLE-RESEARCH/ai-search-observations.csv`
 - `02-GOOGLE-RESEARCH/RESEARCH-SUMMARY.md`
 
 ## Tool roles
@@ -71,6 +72,17 @@ For important queries record query, market, location, device, date, top URLs, do
 
 When material, compare mobile vs desktop SERPs and record differences.
 
+## AI search observation
+
+For important queries (informational, comparison, and high-value commercial),
+check whether Google shows an AI Overview (and AI Mode where reachable) in
+the target market. Record whether it appears, the answer's main points,
+cited source URLs/domains, and whether the client or competitors are cited.
+Where the user approves and the engines are reachable, sample the same
+queries in ChatGPT search, Perplexity, or Gemini and record the same
+fields. Output: `02-GOOGLE-RESEARCH/ai-search-observations.csv`. Follow the
+AI search policy in CLAUDE.md.
+
 ## Validation
 
 - [ ] Every KWP batch had location/language/currency verified.
@@ -78,4 +90,5 @@ When material, compare mobile vs desktop SERPs and record differences.
 - [ ] Autocomplete query was cleared between tests.
 - [ ] Trends seasonality assessed for important topics.
 - [ ] Device split captured where material.
+- [ ] AI Overview / AI answer observations recorded for important queries.
 - [ ] Source/date retained.

@@ -33,6 +33,14 @@ Semrush and Google disagree on volume, intent, or SERP features, record
 both and resolve using the live SERP. Semrush may be used here to
 cross-check Google-stage results, subject to the Semrush policy.
 
+## AI search
+
+Add an `ai_overview_present` / `ai_citation_opportunity` flag and notes to
+the master keyword data from the AI search observations. Question-style and
+comparison queries where an AI answer appears and the client is not cited
+are citation opportunities. Do not treat an AI Overview as a guaranteed
+traffic loss or gain; record it as a SERP-feature factor in prioritisation.
+
 ## Cleaning
 
 Flag/remove wrong geography, wrong language, unrelated meanings, irrelevant audiences/products, jobs, piracy, unrelated brands, duplicates, and out-of-scope queries. Use Keep/Exclude/Review for ambiguity.

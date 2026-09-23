@@ -42,6 +42,14 @@ Do not use Semrush live in this stage. Package the approved keyword/page
 brief as-is; client facts and proof remain authoritative. Do not run new
 keyword research or refresh metrics here.
 
+## AI search handoff
+
+Include in `10-SEARCH-QUESTIONS-AND-OBJECTIONS.md` the questions AI
+answers give for each page's topic, and in each page brief the AI-search
+requirements from stage 06 (direct answers, extractable structure, entity
+facts). Flag claims that need client verification, since AI engines quote
+what is on the page. Handoff only; no live AI-search research here.
+
 ## Copy vs move
 
 Copy source artifacts. Do not move/delete originals. Research remains the source of truth. Refresh handoff copies when source files change.

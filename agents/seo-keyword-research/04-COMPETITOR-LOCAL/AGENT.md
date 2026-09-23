@@ -28,7 +28,8 @@ Understand the SERP competitive landscape and, where relevant, local search, Goo
 ## Tool roles
 
 Use both. Semrush (access path chosen by the user each time: MCP/API, internal browser, or
-exports, per the Semrush policy in CLAUDE.md) analyses competitor SERPs, top pages, rankings,
+exports, per the Semrush policy in CLAUDE.md; browser mode follows the
+extraction-without-export rules there) analyses competitor SERPs, top pages, rankings,
 and, where the account has them, GBP/NAP/reviews/listings and map-rank
 tracking. Google (internal browser, target-market domain) verifies
 important live SERPs and Local Pack results. Record which source each
@@ -43,6 +44,16 @@ business's target market (see CLAUDE.md Google policy). Separate commercial comp
 
 Use internal browser for Google Business Profile, Local Pack, and citation
 observations. Only when local intent/business model justifies it, audit observable GBP completeness, categories, NAP consistency, service areas, hours, website, reviews, photos/posts, Local Pack presence, local landing pages, and citation consistency. Never invent unobserved fields.
+
+## AI search competitors
+
+Identify which competitors and third-party sources (directories, publishers,
+forums, review sites) AI answers cite for the client's key queries, and note
+what those sources have in common (structure, direct answers, entity/proof
+signals, freshness). Use `02-GOOGLE-RESEARCH/ai-search-observations.csv` and
+Semrush AI visibility data if available, and add a section to
+`COMPETITOR-ANALYSIS.md`. Also note consistency of business name, address,
+services, and reviews across listings, since AI engines draw on them.
 
 ## Device split
 

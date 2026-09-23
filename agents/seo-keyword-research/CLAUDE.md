@@ -46,6 +46,46 @@ Semrush is the only paid SEO platform assumed by this system.
 
 Allowed paths: (1) actual Semrush MCP/API access; (2) the internal browser session, only after the user picks it, working in the Semrush web UI they are signed in to (never enter credentials, and record what was observed on screen, not inferred); (3) manual Semrush instructions plus user-provided exports/data. Never claim account access unless a tool result confirms it — and never assume MCP/API access is *missing* either; check for the actual Semrush tools before telling the user it isn't available.
 
+### Semrush browser extraction without export
+
+The user's Semrush plan may not allow exports. When the user picks the
+internal browser path, do not rely on Export or clipboard Copy. Instead:
+
+1. **Filter first; capture only what the work needs.** Decide which rows the
+   stage actually needs (relevant intent, geography, volume/KD range,
+   include/exclude terms, question or word-count filters, competitor or page
+   scope) and apply those filters in Semrush before reading anything. Never
+   pull a whole report by default. Set the database/country, filters, and
+   sort; record them. Set rows-per-page to the maximum offered.
+2. Read the rendered table (`get_page_text` / `read_page`) page by page and
+   write the rows straight into the stage's CSV inside the project folder
+   (e.g. `03-SEMRUSH-RESEARCH/keyword-magic.csv`). Save after every page so a
+   broken session loses nothing. Dedupe on keyword.
+3. Read only the filtered result set. If it is still large, tighten the
+   filters rather than paging through everything; stop when the rows are no
+   longer relevant to the stage's need, and say why.
+4. Verify the captured row count against Semrush's "Total results" figure and
+   record captured vs. skipped. If the plan caps rows or daily results, log
+   the cap and treat the data as a sample, not complete.
+5. Never write a value that was not seen on screen; leave missing fields
+   blank. Capture hover/drill-down fields only for priority keywords.
+6. Work at a normal pace. If a throttle, bot check, or logout actually
+   appears, stop and tell the user (never enter credentials or solve a
+   CAPTCHA).
+7. **Checkpoint** after each seed/report: stop, report rows saved, filters
+   used, and any cap hit, and continue only when the user says so.
+
+Files are only ever read from the project folder or from an exact file the
+user names or attaches. Never browse or request access to the user's
+Downloads folder.
+
+**User-supplied data fallback.** If the browser cannot read a report
+reliably or a cap blocks the pull, stop and give the user the exact
+report, filters, and target file name. The user saves the file into the
+stage folder (e.g. `03-SEMRUSH-RESEARCH/`) or attaches it, then says "done".
+The agent then reads that file, checks the columns and row count, and
+continues. Offer this for that one report only, not the whole stage.
+
 ## Google policy
 
 Use the internal browser for Google Keyword Planner, Google Trends, autocomplete, PAA, Related Searches, manual SERP analysis, and local-search observations. Before concluding the browser can't reach a site or perform an action, actually try it once — don't assume a login wall, region block, or bot check exists without seeing it happen.
@@ -76,8 +116,30 @@ Semrush policy above (MCP/API, internal browser, or user-supplied exports, as ch
 | 07 Copywriting Handoff | **Not used live.** Work from the approved keyword/page brief; client facts and proof stay authoritative. | Not used live. |
 | 08 Measurement | Rankings, backlinks, site health, competitor monitoring. | Google Search Console, GA4, and GBP data for first-party performance and enquiries. |
 
+AI search (Google AI Overviews and answer engines) is observed in stages 02/04/08 via the internal browser and, in 03/08, Semrush AI visibility reports where available; see the AI search policy below.
+
 When Semrush and Google/first-party data disagree, first-party data wins
 for performance and enquiries; live SERPs win for intent and local results.
+
+## AI search (GEO/AEO) policy
+
+AI search visibility is part of SEO in this system. "AI search" means Google
+AI Overviews and AI Mode, plus answer engines such as ChatGPT search,
+Perplexity, Gemini, and Copilot. Rules for every stage that touches it:
+
+- Observe, don't assume. Record AI answers only from what was actually seen
+  (internal browser for live answers, or Semrush AI/visibility reports where
+  the account has them and the user chose that access path). Log engine,
+  query, market, date, whether an answer appeared, which sources were cited,
+  and whether the client or competitors were named.
+- Never invent citations, mentions, or "AI visibility" scores. If an engine
+  is not reachable or requires login, say so after a real attempt (rule 11).
+- AI answers are volatile: treat a single observation as a sample, not a
+  ranking, and date-stamp everything.
+- Optimise for being the clearest, most citable source: direct answers to
+  real questions, entity clarity (who/what/where), verifiable facts, sound
+  structure, and crawlability by AI crawlers. Do not promise or guarantee
+  AI citations, and do not use manipulative prompt-injection-style tactics.
 
 ## Semrush API unit budgeting
 

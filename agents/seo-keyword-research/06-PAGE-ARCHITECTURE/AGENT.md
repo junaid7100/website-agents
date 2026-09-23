@@ -46,6 +46,18 @@ Consider business model, products/services, user journeys, navigation, conversio
 
 Include SEO, user, business, and content-architecture requirements: primary/secondary terms, intent, metrics, SERP features, related questions/topics, competitor URLs, audience, problem, goal, objections, CTA, trust assets, H1, major sections, H2/H3 hierarchy, internal links, FAQs, assets, and schema opportunities where appropriate.
 
+## AI search readiness
+
+Each page brief includes AI-search requirements where relevant: the
+questions the page must answer directly and concisely near the top,
+extractable structure (clear headings, lists, tables, definitions), entity
+clarity (business name, services, location, people, credentials), factual
+claims that can be verified and sourced, FAQ/schema opportunities that match
+visible content, freshness/update owner, and crawlability (robots and
+AI-crawler access, indexable HTML rather than script-only content). Consider
+an `llms.txt` only as optional, low-confidence. Do not add FAQ or schema
+content that isn't genuinely on the page.
+
 ## Conversion
 
 Use only genuine available trust assets. Never invent testimonials, reviews, awards, certifications, statistics, guarantees, or pricing.

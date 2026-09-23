@@ -23,11 +23,12 @@ Optional: Search Console data, GA4 data, Google Business Profile data, Semrush r
 - `08-MEASUREMENT/GA4-LANDING-PAGE-ANALYSIS.csv`
 - `08-MEASUREMENT/SEO-OPPORTUNITIES.md`
 - `08-MEASUREMENT/CONTENT-REFRESH-QUEUE.csv`
+- `08-MEASUREMENT/AI-SEARCH-LOG.csv`
 - `08-MEASUREMENT/MEASUREMENT-LOG.md`
 
 ## Tool roles
 
-- **Semrush** (access path asked each time: MCP/API, internal browser, or exports, per the Semrush policy): rankings/position tracking, backlinks, site health, and competitor monitoring.
+- **Semrush** (access path asked each time: MCP/API, internal browser, or exports, per the Semrush policy; browser mode follows the extraction-without-export rules): rankings/position tracking, backlinks, site health, and competitor monitoring.
 - **Google Search Console, GA4, and Google Business Profile**: first-party performance and enquiries. These are authoritative for clicks, sessions, conversions, calls, and direction requests.
 
 Label every metric with its source; Semrush ranking estimates are not a substitute for GSC data.
@@ -39,6 +40,16 @@ Where available analyze queries, clicks, impressions, CTR, average position, pag
 ## GA4
 
 Where available analyze landing page, organic sessions, engagement, conversions, conversion rate, revenue/value where configured, device, and geography.
+
+## AI search visibility
+
+Re-sample the tracked queries in Google AI Overviews and, where approved,
+other answer engines on a set cadence, using the same fields as
+`02-GOOGLE-RESEARCH/ai-search-observations.csv`, plus Semrush AI visibility
+where available. In GA4 (and referrer data), look for traffic from AI
+engines (e.g. chatgpt.com, perplexity.ai, gemini.google.com, copilot) and
+report it separately from organic search. Log to
+`08-MEASUREMENT/AI-SEARCH-LOG.csv`. Treat results as samples, not rankings.
 
 ## Optimization
 
