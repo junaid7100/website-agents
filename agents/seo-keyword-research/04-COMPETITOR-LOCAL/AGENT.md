@@ -25,6 +25,15 @@ Understand the SERP competitive landscape and, where relevant, local search, Goo
 - `04-COMPETITOR-LOCAL/DEVICE-SERP-ANALYSIS.csv`
 - `04-COMPETITOR-LOCAL/BACKLINK-GAP-SUMMARY.md`
 
+## Tool roles
+
+Use both. Semrush (access path chosen by the user each time: MCP/API, internal browser, or
+exports, per the Semrush policy in CLAUDE.md) analyses competitor SERPs, top pages, rankings,
+and, where the account has them, GBP/NAP/reviews/listings and map-rank
+tracking. Google (internal browser, target-market domain) verifies
+important live SERPs and Local Pack results. Record which source each
+observation came from.
+
 ## Competitor research
 
 Use internal browser, set to the Google country/domain matching the

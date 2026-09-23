@@ -1,6 +1,6 @@
 ---
 name: seo-measurement
-description: Post-launch measurement and optimization loop using Google Search Console and GA4 data against the original keyword-to-page map. Not part of the pre-launch pipeline — run this separately once the site is live and tracking data exists.
+description: Post-launch measurement and optimization loop using Google Search Console, GA4, GBP, and Semrush data against the original keyword-to-page map. Not part of the pre-launch pipeline — run this separately once the site is live and tracking data exists.
 ---
 
 # Agent 08 — Post-Launch SEO Measurement & Optimization
@@ -15,7 +15,7 @@ Create the post-launch measurement loop using Google Search Console and GA4 so k
 - `06-PAGE-ARCHITECTURE/KEYWORD-TO-PAGE-MAP.csv`
 - published URL inventory
 
-Optional: Search Console data, GA4 data, ranking data, business KPI data.
+Optional: Search Console data, GA4 data, Google Business Profile data, Semrush ranking/backlink/site-health data, business KPI data.
 
 ## Outputs
 
@@ -24,6 +24,13 @@ Optional: Search Console data, GA4 data, ranking data, business KPI data.
 - `08-MEASUREMENT/SEO-OPPORTUNITIES.md`
 - `08-MEASUREMENT/CONTENT-REFRESH-QUEUE.csv`
 - `08-MEASUREMENT/MEASUREMENT-LOG.md`
+
+## Tool roles
+
+- **Semrush** (access path asked each time: MCP/API, internal browser, or exports, per the Semrush policy): rankings/position tracking, backlinks, site health, and competitor monitoring.
+- **Google Search Console, GA4, and Google Business Profile**: first-party performance and enquiries. These are authoritative for clicks, sessions, conversions, calls, and direction requests.
+
+Label every metric with its source; Semrush ranking estimates are not a substitute for GSC data.
 
 ## Search Console
 
@@ -40,7 +47,7 @@ Possible actions include title/meta tests, content expansion, internal linking, 
 ## Validation
 
 - [ ] Data period is explicit.
-- [ ] GSC and GA4 metrics are clearly labeled.
+- [ ] GSC, GA4, GBP, and Semrush metrics are clearly labeled by source.
 - [ ] Visibility data is distinguished from business outcomes.
 - [ ] Actions reference observed evidence.
 - [ ] Changes are logged.

@@ -14,7 +14,7 @@ Combine research into a clean, deduplicated, intent-classified, clustered, and p
 - `00-ORCHESTRATOR/PROJECT-MANIFEST.md`
 - `01-MARKET-SEEDS/SEED-KEYWORDS.csv`
 - Google research outputs
-- Semrush outputs if available
+- Semrush outputs if available (metrics and competitor data)
 - competitor/local outputs where relevant
 
 ## Outputs
@@ -25,6 +25,13 @@ Combine research into a clean, deduplicated, intent-classified, clustered, and p
 - `05-KEYWORD-INTELLIGENCE/KEYWORD-CLUSTERS.csv`
 - `05-KEYWORD-INTELLIGENCE/KEYWORD-PRIORITY.csv`
 - `05-KEYWORD-INTELLIGENCE/INTELLIGENCE-SUMMARY.md`
+
+## Tool roles
+
+Combine Semrush metrics and competitor data with Google evidence. Where
+Semrush and Google disagree on volume, intent, or SERP features, record
+both and resolve using the live SERP. Semrush may be used here to
+cross-check Google-stage results, subject to the Semrush policy.
 
 ## Cleaning
 

@@ -25,6 +25,13 @@ Use Google-based research to expand, validate, and contextualize the seed univer
 - `02-GOOGLE-RESEARCH/serp-observations.csv`
 - `02-GOOGLE-RESEARCH/RESEARCH-SUMMARY.md`
 
+## Tool roles
+
+Stay Google-first: Keyword Planner, Trends, Autocomplete, PAA, Related
+Searches, and live SERPs for the business's target market. Do not pull
+Semrush data in this stage; Semrush may later cross-check these results
+(stage 05).
+
 ## Google Keyword Planner
 
 Use internal browser, set to the Google country/domain matching the

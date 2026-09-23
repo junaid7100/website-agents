@@ -26,6 +26,14 @@ Use available SERP, competitor, local, VOC, customer-question, backlink, and exi
 - `06-PAGE-ARCHITECTURE/PAGE-BRIEFS/`
 - `06-PAGE-ARCHITECTURE/ARCHITECTURE-DECISIONS.md`
 
+## Tool roles
+
+Use Semrush clusters, top pages, SERP features, and competitor page
+structures (already collected in stages 03-05) as supporting evidence
+only. Do not create pages from volume alone. Do not make new Semrush calls
+in this stage unless a specific gap blocks a decision, and then only per
+the Semrush policy.
+
 ## Mapping
 
 For each finalized cluster determine cluster, primary keyword, secondary keywords, intent, URL, page type, business purpose, primary/secondary conversion, priority, existing/new page, and notes.

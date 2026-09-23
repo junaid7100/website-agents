@@ -22,6 +22,6 @@ After Agent 01, Agents 02, 03, and 04 may run independently.
 
 ## Checkpoints
 
-- Semrush: choose MCP/API or manual export before Semrush work.
+- Semrush: choose MCP/API, internal browser, or manual export before each Semrush use (asked every time).
 - Google Keyword Planner: verify location, language, and currency before every keyword-entry batch.
 - Research completion: do not finalize keyword intelligence until Google, Semrush, and competitor/local inputs are complete or explicitly unavailable.

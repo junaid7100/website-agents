@@ -36,6 +36,12 @@ Create `08-COPYWRITING-AGENT/` with:
 - `11-CONVERSION-REQUIREMENTS.md`
 - `12-COPYWRITING-HANDOFF.md`
 
+## Tool roles
+
+Do not use Semrush live in this stage. Package the approved keyword/page
+brief as-is; client facts and proof remain authoritative. Do not run new
+keyword research or refresh metrics here.
+
 ## Copy vs move
 
 Copy source artifacts. Do not move/delete originals. Research remains the source of truth. Refresh handoff copies when source files change.

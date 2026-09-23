@@ -38,13 +38,13 @@ This repository is a modular SEO keyword-research system. Every specialist agent
 
 ## Semrush policy
 
-Semrush is the only paid SEO platform assumed by this system. Do not use or pretend to use a Semrush web UI/browser session.
+Semrush is the only paid SEO platform assumed by this system.
 
-Whenever Semrush data is needed, ask:
+**Ask every time.** Each time Semrush data is needed (every stage and every new batch of work, not once per project), ask the user which access path to use, and do not reuse an earlier answer:
 
-> Should I access Semrush via MCP/API, or should I give you the manual Semrush steps and have you bring the data back?
+> How should I access Semrush this time: (1) MCP/API, (2) the internal browser (you stay logged in to Semrush there), or (3) manual steps where you bring the data back?
 
-Allowed paths are actual Semrush MCP/API access or manual Semrush instructions plus user-provided exports/data. Never claim account access unless a tool result confirms it — and never assume MCP/API access is *missing* either; check for the actual Semrush tools before telling the user it isn't available.
+Allowed paths: (1) actual Semrush MCP/API access; (2) the internal browser session, only after the user picks it, working in the Semrush web UI they are signed in to (never enter credentials, and record what was observed on screen, not inferred); (3) manual Semrush instructions plus user-provided exports/data. Never claim account access unless a tool result confirms it — and never assume MCP/API access is *missing* either; check for the actual Semrush tools before telling the user it isn't available.
 
 ## Google policy
 
@@ -60,10 +60,29 @@ Before every Google Keyword Planner keyword-entry batch verify **location, langu
 
 When testing autocomplete, clear/remove the previous keyword before entering the next one.
 
+## Tool roles by stage (Semrush vs Google vs first-party)
+
+Each tool has a defined role per stage. Semrush is access-gated by the
+Semrush policy above (MCP/API, internal browser, or user-supplied exports, as chosen by the user each time); Google tools use the internal browser per the Google policy.
+
+| Stage | Semrush | Google / first-party |
+|---|---|---|
+| 01 Market & Seeds | Not primary. Do not use for seed discovery. | Client brief, customer language, Google discovery (autocomplete, PAA, related searches). |
+| 02 Google Research | Not used here; may cross-check results later in 05. | Primary: Keyword Planner, Trends, Autocomplete, PAA, Related Searches, live SERPs for the target market. |
+| 03 Semrush Research | **Primary**: Keyword Magic, Keyword Overview, Keyword Gap, Organic Research, Top Pages, SERP features, Backlink Gap. | Supporting only. |
+| 04 Competitor & Local | Analyse competitor SERPs, top pages, rankings, GBP, NAP, reviews, listings, map tracking (Listing Management / Map Rank Tracker where the account has them). | Verify important live local results and Local Pack in the target-market Google SERP. |
+| 05 Keyword Intelligence | Metrics and competitor data. Semrush intent is an input only. | Combine with Google evidence; check important intents against actual SERPs. |
+| 06 Page Architecture | Supporting evidence only: clusters, top pages, SERP features, competitor page structures. Never create a page from volume alone. | SERP/local/VOC evidence. |
+| 07 Copywriting Handoff | **Not used live.** Work from the approved keyword/page brief; client facts and proof stay authoritative. | Not used live. |
+| 08 Measurement | Rankings, backlinks, site health, competitor monitoring. | Google Search Console, GA4, and GBP data for first-party performance and enquiries. |
+
+When Semrush and Google/first-party data disagree, first-party data wins
+for performance and enquiries; live SERPs win for intent and local results.
+
 ## Semrush API unit budgeting
 
 This applies only when Semrush is reached through live API/MCP access
-(`execute_report` and related tools), not when giving the user manual UI
+(`execute_report` and related tools), not when using the internal browser or giving the user manual UI
 instructions.
 
 Treat API/MCP units as a finite project budget. Before expensive calls,

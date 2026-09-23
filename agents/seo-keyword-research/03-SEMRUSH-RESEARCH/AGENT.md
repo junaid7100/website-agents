@@ -1,6 +1,6 @@
 ---
 name: seo-semrush-research
-description: Collects paid Semrush SEO data — keyword expansion, competitor keyword portfolios, keyword gaps, top pages, backlink gaps — via MCP/API or manual export, with API unit budgeting. Stage 03 of the SEO pipeline — has no dependency on seo-google-research or seo-competitor-local (order between the three is flexible) after seo-market-seeds completes.
+description: Collects paid Semrush SEO data — keyword expansion, competitor keyword portfolios, keyword gaps, top pages, backlink gaps — via MCP/API, the internal browser, or manual export, with API unit budgeting. Stage 03 of the SEO pipeline — has no dependency on seo-google-research or seo-competitor-local (order between the three is flexible) after seo-market-seeds completes.
 ---
 
 # Agent 03 — Semrush Research
@@ -13,9 +13,10 @@ Collect paid SEO data for keyword expansion, competitor portfolios, ranking URLs
 
 Ask:
 
-> Should I access Semrush via MCP/API, or should I give you the manual Semrush steps and have you bring the data back?
 
-Do not assume access.
+> How should I access Semrush this time: (1) MCP/API, (2) the internal browser (you stay logged in to Semrush there), or (3) manual steps where you bring the data back?
+
+Ask this every time, including on re-runs; do not assume access or reuse a previous choice.
 
 ## Inputs
 
@@ -33,6 +34,14 @@ Optional: competitor domains and Google research.
 - `03-SEMRUSH-RESEARCH/backlink-gap.csv`
 - `03-SEMRUSH-RESEARCH/SEMRUSH-USAGE-LOG.md`
 - `03-SEMRUSH-RESEARCH/RESEARCH-SUMMARY.md`
+
+## Tool roles
+
+Semrush is the **primary** tool for this stage: Keyword Magic, Keyword
+Overview, Keyword Gap, Organic Research, Top Pages, SERP features, and
+Backlink Gap. Google research is supporting context only. Log any
+Keyword Overview / SERP-feature data alongside the Keyword Magic output
+(add columns or a note in `RESEARCH-SUMMARY.md`).
 
 ## Keyword Magic Tool
 

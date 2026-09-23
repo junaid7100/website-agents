@@ -45,7 +45,7 @@
 - `{{NONE}}`
 
 ## Semrush access
-- Mode: `NOT_DECIDED | MCP/API | MANUAL`
+- Mode: `NOT_DECIDED | MCP/API | BROWSER | MANUAL` (asked again at each Semrush use; this records the latest choice only)
 - Unit budget available: `{{UNKNOWN_OR_VALUE}}`
 - Unit budget used: `{{UNKNOWN_OR_VALUE}}`
 

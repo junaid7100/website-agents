@@ -34,6 +34,13 @@ Optional: sales/support notes, CRM notes, call transcripts, reviews, known compe
 6. Add competitor terminology cautiously; competitor brands are not automatically target keywords.
 7. Flag ambiguous seeds and preserve source attribution.
 
+## Tool roles
+
+Do not use Semrush as a primary source here. Build seeds from the client
+brief, customer language, and Google discovery (autocomplete, PAA, related
+searches via the internal browser). Semrush volume/KD data is gathered
+later in stage 03.
+
 ## VOC rule
 
 Never invent customer quotes. Mark supplied language as `USER_PROVIDED`.
