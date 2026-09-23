@@ -168,8 +168,8 @@ Only start after Phase 1 is approved.
      (the SEO pipeline's handoff folder — its primary SEO input source)
    - `00-INTAKE.md` (business/brand/audience facts, proof/trust assets)
 3. Its own instructions have you run a project-init pass, then process pages
-   one at a time (its own per-page procedure), **asking permission before
-   drafting each individual page** — this is the main context-management
+   one at a time (its own per-page procedure), **asking the user which
+   page(s) to write, and never choosing or starting a page itself** — this is the main context-management
    lever for multi-page sites: stop at any page boundary and resume in a
    fresh session later via `PAGE_QUEUE.md` rather than drafting every page
    in one long conversation. Pages marked **BLOCKED / NEEDS INPUT** in

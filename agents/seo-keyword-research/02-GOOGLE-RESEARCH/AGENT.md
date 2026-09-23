@@ -33,6 +33,14 @@ Searches, and live SERPs for the business's target market. Do not pull
 Semrush data in this stage; Semrush may later cross-check these results
 (stage 05).
 
+## Google domain and market
+
+Use the target-market Google domain for all Google work in this stage
+(SERPs, autocomplete, PAA, Related Searches, AI Overviews, Trends region,
+Keyword Planner location/language), verify the results really reflect that
+market, and record domain, country, language, and location on every
+observation. See the Google policy in CLAUDE.md.
+
 ## Google Keyword Planner
 
 Use internal browser, set to the Google country/domain matching the
@@ -100,4 +108,5 @@ AI search policy in CLAUDE.md.
 - [ ] Trends seasonality assessed for important topics.
 - [ ] Desktop and mobile both checked for important queries, with `device` recorded.
 - [ ] AI Overview / AI answer observations recorded for important queries.
+- [ ] Target-market Google domain, country, language, and location used and recorded.
 - [ ] Source/date retained.

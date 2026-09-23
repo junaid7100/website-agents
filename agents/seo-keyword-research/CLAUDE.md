@@ -98,6 +98,19 @@ not the default the browser happens to open with. Set it explicitly before
 researching, and record which country/domain was used alongside the
 results so downstream stages know what market the SERP evidence reflects.
 
+This applies to **every** Google surface, not only web search: SERPs,
+autocomplete, PAA, Related Searches, AI Overviews/AI Mode, Maps and Local
+Pack, Google Business Profile observations, Trends (set the Trends region to
+the target country), and Keyword Planner (target location and language).
+Also set the search language/region and, where the SERP is location-sensitive
+(local intent), the city or postcode, and verify from the results (local
+currency, local businesses, local language, the country domain in the URL) that
+the browser is really being served the target market, since Google can
+redirect to the country matching the browser's own location. If it redirects
+or shows the wrong market, fix it before recording anything and note the
+correction. Match the Semrush database to the same country. Every
+observation records the domain, country, language, and location used.
+
 Before every Google Keyword Planner keyword-entry batch verify **location, language, and currency**. Multi-keyword input may be newline- or comma-separated. Scroll/paginate result rows as needed.
 
 When testing autocomplete, clear/remove the previous keyword before entering the next one.

@@ -40,6 +40,13 @@ observation came from.
 Use internal browser, set to the Google country/domain matching the
 business's target market (see CLAUDE.md Google policy). Separate commercial competitors, SERP competitors, directories/aggregators, publishers/forums, and local competitors. For important queries inspect domains, page types, topical coverage, trust signals, reviews, local relevance, conversions, internal links, backlinks where available, and freshness.
 
+## Google domain and market
+
+Use the target-market Google domain and local location (city/postcode where
+relevant) for all Google, Maps, and Local Pack observations, verify the
+market from the results, and record domain, country, and location used. See
+the Google policy in CLAUDE.md.
+
 ## Local SEO / GBP
 
 Use internal browser for Google Business Profile, Local Pack, and citation

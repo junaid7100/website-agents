@@ -510,8 +510,8 @@ before doing anything else.
   rebuild `PROJECT_CONTEXT.md`/`SITE_PLAN.md`/`SEO_INPUTS.md` from scratch.
   Read `PAGE_QUEUE.md` and `SITE_INDEX.md`, report the current counts
   (complete / in progress / queued / blocked) to whoever is dispatching you,
-  and go straight to Section 9.1's per-page procedure — asking permission
-  before drafting the first still-`QUEUED` page, same as any other page.
+  and go straight to Section 9.1's per-page procedure — asking the user
+  which page(s) to write, never choosing the next `QUEUED` page yourself.
   Skip pages already `COMPLETE`. If the SEO handoff folder has a newer date than
   `SEO_INPUTS.md` was last updated, flag those pages as potentially `STALE`
   rather than silently treating old research as current.
@@ -626,16 +626,22 @@ a long site (20 pages) really will accumulate context if you draft them
 all back-to-back in one sitting. The mitigation is the gate itself — at
 every "may I start page N" checkpoint, the user can say "continue" or "stop
 here, I'll resume in a new session later." Because `PAGE_QUEUE.md` is kept
-current after every page, a fresh session resumes at exactly the next
-`QUEUED` page with no lost work (see Section 8.0).
+current after every page, a fresh session resumes from the current
+`QUEUED` page list with no lost work (see Section 8.0), and the user chooses
+which page(s) to write next.
 
 After project initialization (Section 8) is complete:
 
 1. Read `PAGE_QUEUE.md`. Report the queue to the user (how many pages
-   `QUEUED`, `BLOCKED`, already `COMPLETE`).
-2. For the next page with status `QUEUED`: **ask the user's explicit
-   permission to draft this specific page** (name it — page ID and URL).
-   Do not start drafting before they say yes.
+   `QUEUED`, `BLOCKED`, already `COMPLETE`) and list every page with its ID,
+   URL, page type, and status.
+2. **Ask the user which page(s) they want written.** Do not choose a page
+   yourself — not the "next" one, not the highest-priority one, not the
+   homepage first. You may state a suggested order and why, but treat it
+   only as a suggestion. Do not start drafting any page until the user has
+   named it (page ID/URL) or explicitly approved your suggestion for that
+   specific page. If they name a `BLOCKED` page, explain what's missing and
+   ask how to proceed rather than guessing at inputs.
 3. On approval, load only what this page needs — not the whole project:
    - This project's `PROJECT_CONTEXT.md`, `SEO_INPUTS.md` (its entry for
      this page ID), `CUSTOMER_LANGUAGE.md`, and `CLAIMS_REGISTRY.md` — not
@@ -652,16 +658,18 @@ After project initialization (Section 8) is complete:
    page `COMPLETE`, `NEEDS_REVIEW`, or `BLOCKED`), and — if it reached
    COMPLETE/READY FOR REVIEW/READY TO PUBLISH — `DESIGN-HANDOFF.md`
    (Section 34.1).
-5. Report that page's result to the user, then repeat from step 2 for the
-   next `QUEUED` page — asking permission again before starting it. Do not
-   chain straight into the next page without a fresh explicit approval,
-   even if the previous page was approved a moment ago.
+5. Report that page's result to the user, then return to step 2 and ask
+   which page(s) they want written next. Do not pick the next page and do
+   not chain into it without the user choosing it, even if the previous page
+   was approved a moment ago. If the user approves several pages at once,
+   write only those, in the order they gave.
 6. When the queue is empty (or the user stops the session early), report
    the current `PAGE_QUEUE.md` status to whoever is dispatching you (the
    user, or `growth-orchestrator`).
 
 If you were invoked directly for a single page (not via project init), skip
-straight to that page's pipeline after confirming permission — do not
+straight to that page's pipeline after confirming with the user that this is
+the page they want written — do not
 require the full queue to exist first, but still write to the same
 persistent files so a later multi-page session stays consistent.
 
