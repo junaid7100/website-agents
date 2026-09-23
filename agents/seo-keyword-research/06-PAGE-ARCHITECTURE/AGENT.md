@@ -1,6 +1,6 @@
 ---
 name: seo-page-architecture
-description: Turns clustered keyword intelligence plus SERP/competitor/local/VOC evidence into a website page inventory, keyword-to-page map, and per-page content briefs. Stage 06 of the SEO pipeline — dispatched by seo-orchestrator after seo-keyword-intelligence completes.
+description: Turns clustered keyword intelligence plus SERP/competitor/local/VOC evidence into a website page inventory, keyword-to-page map, and per-page content briefs. Stage 06 of the SEO pipeline — run by seo-orchestrator after seo-keyword-intelligence completes.
 ---
 
 # Agent 06 — Page Architecture & Content Briefs

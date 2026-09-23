@@ -132,9 +132,12 @@ Use `OBSERVED`, `CALCULATED`, `INFERRED`, `USER_PROVIDED`, or `UNKNOWN` when use
 
 `00-ORCHESTRATOR/PROJECT-MANIFEST.md` is the shared source of truth. A stage is `COMPLETE` only when required inputs exist, outputs exist, validation passes, and the manifest is updated.
 
-## Parallelism
+## Ordering flexibility
 
-After Agent 01 is complete, Agents 02, 03, and 04 can normally run independently.
+After Agent 01 is complete, Agents 02, 03, and 04 have no dependency on each
+other. This system has no subagent tools, so they run one at a time in
+whatever order the user prefers rather than concurrently — but none of them
+needs to wait for a specific one of the other two to finish first.
 
 ## Fresh-session rule
 

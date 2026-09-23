@@ -1,6 +1,6 @@
 ---
 name: seo-google-research
-description: Expands and validates the seed keyword universe using Google Keyword Planner, Trends, autocomplete, PAA, related searches, and manual SERP analysis via the internal browser. Stage 02 of the SEO pipeline — runs independently alongside seo-semrush-research and seo-competitor-local after seo-market-seeds completes.
+description: Expands and validates the seed keyword universe using Google Keyword Planner, Trends, autocomplete, PAA, related searches, and manual SERP analysis via the internal browser. Stage 02 of the SEO pipeline — has no dependency on seo-semrush-research or seo-competitor-local (order between the three is flexible) after seo-market-seeds completes.
 ---
 
 # Agent 02 — Google Research

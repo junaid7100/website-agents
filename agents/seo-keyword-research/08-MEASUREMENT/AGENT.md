@@ -1,6 +1,6 @@
 ---
 name: seo-measurement
-description: Post-launch measurement and optimization loop using Google Search Console and GA4 data against the original keyword-to-page map. Not part of the pre-launch pipeline — dispatch this separately once the site is live and tracking data exists.
+description: Post-launch measurement and optimization loop using Google Search Console and GA4 data against the original keyword-to-page map. Not part of the pre-launch pipeline — run this separately once the site is live and tracking data exists.
 ---
 
 # Agent 08 — Post-Launch SEO Measurement & Optimization

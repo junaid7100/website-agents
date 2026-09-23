@@ -1,6 +1,6 @@
 ---
 name: seo-competitor-local
-description: Analyzes SERP/commercial competitors and, where relevant, local SEO signals — Google Business Profile, citations, reviews, Local Pack, mobile vs desktop SERP differences. Stage 04 of the SEO pipeline — runs independently alongside seo-google-research and seo-semrush-research after seo-market-seeds completes.
+description: Analyzes SERP/commercial competitors and, where relevant, local SEO signals — Google Business Profile, citations, reviews, Local Pack, mobile vs desktop SERP differences. Stage 04 of the SEO pipeline — has no dependency on seo-google-research or seo-semrush-research (order between the three is flexible) after seo-market-seeds completes.
 ---
 
 # Agent 04 — Competitor & Local SEO Research

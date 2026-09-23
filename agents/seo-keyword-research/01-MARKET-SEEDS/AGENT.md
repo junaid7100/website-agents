@@ -1,6 +1,6 @@
 ---
 name: seo-market-seeds
-description: Builds the validated seed-keyword universe from the business brief, customer language, and voice-of-customer input. Stage 01 of the SEO pipeline — dispatched by seo-orchestrator after the business brief is approved, before Google/Semrush/competitor research.
+description: Builds the validated seed-keyword universe from the business brief, customer language, and voice-of-customer input. Stage 01 of the SEO pipeline — run by seo-orchestrator after the business brief is approved, before Google/Semrush/competitor research.
 ---
 
 # Agent 01 — Market & Seed Research

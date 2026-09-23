@@ -35,13 +35,19 @@ Every stage can run in a new Claude Code session. The handoff mechanism is the f
 
 ## Suggested execution
 
+`00-ORCHESTRATOR/AGENT.md` (the `seo-orchestrator` agent) walks through
+stages 01-07 itself, one at a time, asking permission before each — this is
+the normal entry point rather than running each stage by hand:
+
 1. Run `00-ORCHESTRATOR`.
 2. Run `01-MARKET-SEEDS`.
-3. Run `02-GOOGLE-RESEARCH`, `03-SEMRUSH-RESEARCH`, and `04-COMPETITOR-LOCAL` independently.
+3. Run `02-GOOGLE-RESEARCH`, `03-SEMRUSH-RESEARCH`, and `04-COMPETITOR-LOCAL`
+   — no dependency between these three, so any order works, but they run
+   one at a time (there are no subagent tools to run them concurrently).
 4. Run `05-KEYWORD-INTELLIGENCE`.
 5. Run `06-PAGE-ARCHITECTURE`.
 6. Run `07-COPYWRITING-HANDOFF`.
-7. After launch and sufficient data, run `08-MEASUREMENT`.
+7. After launch and sufficient data, run `08-MEASUREMENT` separately.
 
 ## Re-running
 

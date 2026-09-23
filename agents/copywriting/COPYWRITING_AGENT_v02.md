@@ -496,8 +496,7 @@ This prevents repeated SEO research and repeated context loading.
 
 Before processing multiple pages, run a single **project init pass** — this
 is the only part of your work that happens once for the whole site, not
-per-page. Do this in your own session before dispatching any page sessions
-(Section 9.1).
+per-page. Do this before starting the per-page procedure (Section 9.1).
 
 ## 8.0 Resuming (check this first)
 
@@ -510,9 +509,10 @@ before doing anything else.
   ended after hitting its context window, or simply to save tokens. Do not
   rebuild `PROJECT_CONTEXT.md`/`SITE_PLAN.md`/`SEO_INPUTS.md` from scratch.
   Read `PAGE_QUEUE.md` and `SITE_INDEX.md`, report the current counts
-  (complete / in progress / queued / blocked) to whoever dispatched you, and
-  go straight to Section 9.1's dispatch loop for pages still `QUEUED` — skip
-  pages already `COMPLETE`. If the SEO handoff folder has a newer date than
+  (complete / in progress / queued / blocked) to whoever is dispatching you,
+  and go straight to Section 9.1's per-page procedure — asking permission
+  before drafting the first still-`QUEUED` page, same as any other page.
+  Skip pages already `COMPLETE`. If the SEO handoff folder has a newer date than
   `SEO_INPUTS.md` was last updated, flag those pages as potentially `STALE`
   rather than silently treating old research as current.
 
@@ -615,50 +615,55 @@ When another page is started, repeat the page-level process using persistent pro
 
 Do not carry the full previous session forward.
 
-## 9.1 Multi-Page Dispatch Procedure
+## 9.1 Multi-Page Procedure (no subagent tools)
 
-This is how "another page is started" actually happens, and it is the
-answer to the context-window problem: **never write multiple pages inside
-one conversation.** A site with 20 pages must not accumulate 20 pages' worth
-of research, drafts, and QA output in a single session — that is exactly
-what blows the context window and degrades quality on later pages.
+This is how "another page is started" actually happens. There is no
+Task/Agent tool here — every page is drafted in this same continuous
+session, one at a time, **only after the user explicitly approves starting
+that specific page**. This permission gate is also the context-management
+tool: since pages are not isolated into separate subagent contexts anymore,
+a long site (20 pages) really will accumulate context if you draft them
+all back-to-back in one sitting. The mitigation is the gate itself — at
+every "may I start page N" checkpoint, the user can say "continue" or "stop
+here, I'll resume in a new session later." Because `PAGE_QUEUE.md` is kept
+current after every page, a fresh session resumes at exactly the next
+`QUEUED` page with no lost work (see Section 8.0).
 
-Instead, after project initialization (Section 8) is complete:
+After project initialization (Section 8) is complete:
 
-1. Read `PAGE_QUEUE.md`. For each page with status `QUEUED`:
-2. Dispatch a **fresh copywriting subagent call** (via the Task/Agent tool,
-   `subagent_type: copywriting`) scoped to that one page only. Give it:
-   - The path to this project's `PROJECT_CONTEXT.md`, `SEO_INPUTS.md`
-     (its entry for this page ID), `CUSTOMER_LANGUAGE.md`, and
-     `CLAIMS_REGISTRY.md` — not the full research folder.
+1. Read `PAGE_QUEUE.md`. Report the queue to the user (how many pages
+   `QUEUED`, `BLOCKED`, already `COMPLETE`).
+2. For the next page with status `QUEUED`: **ask the user's explicit
+   permission to draft this specific page** (name it — page ID and URL).
+   Do not start drafting before they say yes.
+3. On approval, load only what this page needs — not the whole project:
+   - This project's `PROJECT_CONTEXT.md`, `SEO_INPUTS.md` (its entry for
+     this page ID), `CUSTOMER_LANGUAGE.md`, and `CLAIMS_REGISTRY.md` — not
+     the full research folder.
    - That page's brief from `08-PAGE-BRIEFS/` and its row from
      `04-KEYWORD-TO-PAGE-MAP.csv`.
-   - Any already-completed pages' `SITE_INDEX.md` entries (summaries only,
-     per Section 2.5) for cross-page consistency — never their full copy.
-3. That dispatched instance runs the full per-page pipeline (Section 9's
-   diagram: page context → research if approved → strategy → outline →
-   draft → SEO edit → conversion edit → fact check → QA → page package →
-   handoff) inside its own isolated context, writes its `HANDOFF.md`, and
-   ends its session.
-4. In your own (dispatching) session, after each page subagent returns:
-   update `SITE_INDEX.md`, `CLAIMS_REGISTRY.md` (if claims were added),
-   `PAGE_QUEUE.md` (mark that page `COMPLETE`, `NEEDS_REVIEW`, or `BLOCKED`),
-   and — if the page reached COMPLETE/READY FOR REVIEW/READY TO PUBLISH —
-   `DESIGN-HANDOFF.md` (Section 34.1), all from its `HANDOFF.md` — do not
-   pull its full draft copy into your own context to do this.
-5. Move to the next `QUEUED` page. Independent pages (no shared internal-link
-   dependency, no cross-page consistency check pending) may be dispatched in
-   parallel; pages that reference each other's finalized decisions should be
-   dispatched sequentially so the later page can read the earlier page's
-   `SITE_INDEX.md` entry.
-6. When the queue is empty, report the final `PAGE_QUEUE.md` status to
-   whatever dispatched you (the user, or `growth-orchestrator`) rather than
-   the accumulated copy of every page.
+   - Already-completed pages' `SITE_INDEX.md` entries (summaries only, per
+     Section 2.5) for cross-page consistency — never their full copy.
+4. Run the full per-page pipeline in this session (Section 9's diagram:
+   page context → research if approved → strategy → outline → draft → SEO
+   edit → conversion edit → fact check → QA → page package → handoff),
+   write that page's `HANDOFF.md`, then update `SITE_INDEX.md`,
+   `CLAIMS_REGISTRY.md` (if claims were added), `PAGE_QUEUE.md` (mark that
+   page `COMPLETE`, `NEEDS_REVIEW`, or `BLOCKED`), and — if it reached
+   COMPLETE/READY FOR REVIEW/READY TO PUBLISH — `DESIGN-HANDOFF.md`
+   (Section 34.1).
+5. Report that page's result to the user, then repeat from step 2 for the
+   next `QUEUED` page — asking permission again before starting it. Do not
+   chain straight into the next page without a fresh explicit approval,
+   even if the previous page was approved a moment ago.
+6. When the queue is empty (or the user stops the session early), report
+   the current `PAGE_QUEUE.md` status to whoever is dispatching you (the
+   user, or `growth-orchestrator`).
 
 If you were invoked directly for a single page (not via project init), skip
-straight to that page's pipeline — do not require the full queue to exist
-first, but still write to the same persistent files so a later multi-page
-session stays consistent.
+straight to that page's pipeline after confirming permission — do not
+require the full queue to exist first, but still write to the same
+persistent files so a later multi-page session stays consistent.
 
 ------------------------------------------------------------------------
 

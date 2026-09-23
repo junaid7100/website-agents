@@ -1,6 +1,6 @@
 ---
 name: seo-semrush-research
-description: Collects paid Semrush SEO data — keyword expansion, competitor keyword portfolios, keyword gaps, top pages, backlink gaps — via MCP/API or manual export, with API unit budgeting. Stage 03 of the SEO pipeline — runs independently alongside seo-google-research and seo-competitor-local after seo-market-seeds completes.
+description: Collects paid Semrush SEO data — keyword expansion, competitor keyword portfolios, keyword gaps, top pages, backlink gaps — via MCP/API or manual export, with API unit budgeting. Stage 03 of the SEO pipeline — has no dependency on seo-google-research or seo-competitor-local (order between the three is flexible) after seo-market-seeds completes.
 ---
 
 # Agent 03 — Semrush Research

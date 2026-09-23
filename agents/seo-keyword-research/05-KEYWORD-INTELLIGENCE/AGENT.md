@@ -1,6 +1,6 @@
 ---
 name: seo-keyword-intelligence
-description: Cleans, deduplicates, classifies intent, clusters, and prioritizes the combined keyword dataset from all research stages into a master keyword intelligence layer. Stage 05 of the SEO pipeline — dispatched by seo-orchestrator after seo-google-research, seo-semrush-research, and seo-competitor-local all complete.
+description: Cleans, deduplicates, classifies intent, clusters, and prioritizes the combined keyword dataset from all research stages into a master keyword intelligence layer. Stage 05 of the SEO pipeline — run by seo-orchestrator after seo-google-research, seo-semrush-research, and seo-competitor-local all complete.
 ---
 
 # Agent 05 — Keyword Intelligence
