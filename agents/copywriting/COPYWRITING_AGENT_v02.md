@@ -174,10 +174,12 @@ The handoff must contain only information required by future sessions, including
 
 - Page ID
 - Page URL
+- Page type
 - Page status
 - Final strategic decisions
 - Core message
 - Primary CTA
+- Secondary CTA
 - Important verified facts
 - Approved claims used
 - Important customer language
@@ -639,10 +641,11 @@ Instead, after project initialization (Section 8) is complete:
    handoff) inside its own isolated context, writes its `HANDOFF.md`, and
    ends its session.
 4. In your own (dispatching) session, after each page subagent returns:
-   update `SITE_INDEX.md`, `CLAIMS_REGISTRY.md` (if claims were added), and
-   `PAGE_QUEUE.md` (mark that page `COMPLETE`, `NEEDS_REVIEW`, or `BLOCKED`)
-   from its `HANDOFF.md` — do not pull its full draft copy into your own
-   context to do this.
+   update `SITE_INDEX.md`, `CLAIMS_REGISTRY.md` (if claims were added),
+   `PAGE_QUEUE.md` (mark that page `COMPLETE`, `NEEDS_REVIEW`, or `BLOCKED`),
+   and — if the page reached COMPLETE/READY FOR REVIEW/READY TO PUBLISH —
+   `DESIGN-HANDOFF.md` (Section 34.1), all from its `HANDOFF.md` — do not
+   pull its full draft copy into your own context to do this.
 5. Move to the next `QUEUED` page. Independent pages (no shared internal-link
    dependency, no cross-page consistency check pending) may be dispatched in
    parallel; pages that reference each other's finalized decisions should be
@@ -1564,6 +1567,43 @@ Do not create empty files when they are not relevant.
 
 The page-level package must be self-contained enough for review while the
 handoff must remain compact enough for future context loading.
+
+# 34.1 UX/UI Design Agent Handoff
+
+Finalized copy is not automatically design-ready just because a page is
+`COMPLETE`. Maintain a project-level `DESIGN-HANDOFF.md` (alongside
+`SITE_INDEX.md`) that the UX/UI Design-to-Prompt Agent reads first, instead
+of it having to open every page's files individually.
+
+Update it whenever a page finishes its QA pass (COMPLETE / READY FOR REVIEW
+/ READY TO PUBLISH) — do not wait until the entire site is done, since pages
+are drafted in independent sessions (Section 9.1) and the design agent may
+start on completed pages before others finish.
+
+For each design-ready page, record:
+
+```text
+Page ID:
+Target URL:
+Page type:
+Core message:
+Primary CTA:
+Secondary CTA:
+FINAL_COPY.md path:
+SEO metadata path (title/meta/slug):
+Available proof/trust assets:        (pull VERIFIED entries from CLAIMS_REGISTRY.md relevant to this page — testimonials, stats, certifications, etc.; do not list NEEDS CONFIRMATION or UNSUPPORTED claims as available)
+Related/internal-linked pages:
+Notes for design (e.g. unusually long/short sections, required FAQ, pricing table):
+```
+
+List excluded pages separately with their blocking reason (NEEDS CLIENT
+INPUT, NEEDS RESEARCH, BLOCKED) so the design agent does not silently skip
+them or invent placeholder copy for them.
+
+`DESIGN-HANDOFF.md` does not carry brand assets (logo, brand guide, colors) —
+those come from the project's `00-INTAKE.md`, supplied directly to the
+design agent by whatever dispatches it. State this explicitly in the file so
+the design agent doesn't expect brand data here.
 
 # 31. OUTPUT PACKAGE
 

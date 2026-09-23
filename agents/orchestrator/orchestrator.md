@@ -161,8 +161,9 @@ Only start after Phase 2 is approved.
 1. Dispatch the `ux-ui-design` subagent, pointing it at `./03-ui-ux-design/`
    (inside the current client project folder) as its working directory.
 2. Give it as input:
-   - The finalized page copy from `./02-copywriting/` (its `FINAL_COPY.md`
-     files) as the content/copy input
+   - `./02-copywriting/` as its content/copy source — it reads
+     `DESIGN-HANDOFF.md` first (which pages are design-ready and their
+     CTAs/proof assets), then each ready page's `FINAL_COPY.md`
    - `00-INTAKE.md` for business brief and any brand assets (logo, brand
      guide) supplied by the client
 3. Let it run its own research and content-analysis passes as defined in its

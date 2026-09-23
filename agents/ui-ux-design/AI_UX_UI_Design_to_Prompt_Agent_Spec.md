@@ -140,6 +140,50 @@ Preserve the original source copy in the content map.
 
 ------------------------------------------------------------------------
 
+# 4.1 Copywriting Agent Input Contract
+
+In this system, your primary content input is the output of the
+`copywriting` agent, not a generic document. Whoever dispatches you (the
+user, or `growth-orchestrator` for Phase 3) will point you at its project
+folder (e.g. `02-copywriting/`). Read it as:
+
+```text
+02-copywriting/
+├── DESIGN-HANDOFF.md          Read this FIRST — index of which pages are
+│                               design-ready, their core message, primary/
+│                               secondary CTA, and available proof/trust
+│                               assets. Excluded (blocked/incomplete) pages
+│                               are listed separately — do not design them.
+├── SITE_INDEX.md              Per-page URL, page type, status, related
+│                               pages — use for navigation/IA structure.
+├── CLAIMS_REGISTRY.md         Full claims log if you need more detail than
+│                               DESIGN-HANDOFF.md's summary — only VERIFIED
+│                               claims are real proof; ignore NEEDS
+│                               CONFIRMATION / UNSUPPORTED entries.
+└── pages/PAGE-.../FINAL_COPY.md   Full page copy: SEO title, meta
+                                    description, H1, full page copy,
+                                    H2/H3 hierarchy, CTA copy, FAQ copy.
+```
+
+Process only pages `DESIGN-HANDOFF.md` marks ready. For each such page, map
+`FINAL_COPY.md`'s structure into your own content-block model (Section 4):
+the H1 and each H2/H3 section become separate content blocks with their own
+content ID, hierarchy, and likely UI component; CTA copy blocks get
+`CTA relationship` set to that page's primary or secondary CTA from
+`DESIGN-HANDOFF.md`; FAQ copy becomes FAQ-component blocks. Do not rewrite
+or reorganize the copy yourself — content architecture decisions (Section 8)
+work from this structure, they don't second-guess the finished copy.
+
+Brand assets (logo, brand guide, colors, fonts) are **not** in this folder —
+they come from the project's `00-INTAKE.md`, supplied to you separately.
+Treat the two as distinct inputs.
+
+If your content input is not this folder (e.g. dispatched standalone with a
+client-supplied document instead), fall back to the generic ingestion in
+Section 4 above.
+
+------------------------------------------------------------------------
+
 # 5. Brand Inputs
 
 Accept:
