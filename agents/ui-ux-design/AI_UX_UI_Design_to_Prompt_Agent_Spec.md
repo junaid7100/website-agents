@@ -272,6 +272,21 @@ Label it:
 Research only where external information can materially improve the
 result.
 
+## External Research Permission Gate
+
+Do not access external websites, competitor sites, or search tools with
+the internal browser merely because research would be useful. Before
+every external research action, tell the user what will be accessed, why
+it's needed, and what will be collected, then wait for explicit
+permission — the same gate the copywriting agent uses. Once approved,
+actually attempt it (see below) rather than assuming it will fail.
+
+If information needed for this phase is missing (brand assets, positioning,
+competitor references, etc.), do not immediately label it `AI-PROPOSED`/
+assumption. First decide whether it's researchable, ask permission, and
+research it; only fall back to `AI-PROPOSED` when research doesn't resolve
+it or isn't applicable.
+
 Research:
 
 -   industry conventions

@@ -21,6 +21,20 @@ This repository is a modular SEO keyword-research system. Every specialist agent
     it manually. Only fall back to a manual path after an actual attempt
     fails or a real check confirms it — not from a guess about what's
     likely to be blocked.
+12. Missing required information is not automatically `UNKNOWN`. Before
+    marking anything unavailable: (a) decide whether it can reasonably be
+    obtained through internet/browser research; (b) if so, ask the user's
+    permission to use the internet browser to research it; (c) once
+    approved, do the research and populate the field from what you find,
+    labeled `OBSERVED`/`INFERRED` as appropriate; (d) only mark something
+    genuinely `UNKNOWN` when it can't be determined from research or
+    supplied inputs. This applies to every stage, not just customer
+    voice/language in Agent 01 — see that agent's own instructions for the
+    specific research scope required there.
+13. No agent in this pipeline dispatches Task/Agent tool subagents. Every
+    stage's research and processing happens inside the current session by
+    Reading that stage's own `AGENT.md` and following it directly — see
+    "How stages actually run" in `00-ORCHESTRATOR/AGENT.md`.
 
 ## Semrush policy
 
@@ -35,6 +49,12 @@ Allowed paths are actual Semrush MCP/API access or manual Semrush instructions p
 ## Google policy
 
 Use the internal browser for Google Keyword Planner, Google Trends, autocomplete, PAA, Related Searches, manual SERP analysis, and local-search observations. Before concluding the browser can't reach a site or perform an action, actually try it once — don't assume a login wall, region block, or bot check exists without seeing it happen.
+
+Always use the Google country/domain (e.g. google.com vs. google.co.uk vs.
+google.com.au) that matches the business's actual target market/geography,
+not the default the browser happens to open with. Set it explicitly before
+researching, and record which country/domain was used alongside the
+results so downstream stages know what market the SERP evidence reflects.
 
 Before every Google Keyword Planner keyword-entry batch verify **location, language, and currency**. Multi-keyword input may be newline- or comma-separated. Scroll/paginate result rows as needed.
 

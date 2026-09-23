@@ -201,8 +201,9 @@ Only start after Phase 2 is approved.
    - `00-INTAKE.md` for business brief and any brand assets (logo, brand
      guide) supplied by the client
 3. Let it run its own research and content-analysis passes as defined in its
-   instructions; it will label supplied vs. researched vs. AI-proposed brand
-   elements itself.
+   instructions, including its own external-research permission gate — it
+   will ask before using the internal browser for competitor/UX research and
+   label supplied vs. researched vs. AI-proposed brand elements itself.
 4. When it finishes, confirm it produced a complete
    `PROJECT DESIGN PROMPT PACKAGE` (sitemap, design system, page-by-page
    prompts, image prompts, QA prompt).
@@ -260,3 +261,15 @@ OPEN BLOCKERS:
 7. Never conclude a tool, site, or capability is blocked or unavailable from
    assumption — actually attempt it and read the real result before telling
    the user it doesn't work or falling back to a manual workaround.
+8. Missing required information is not automatically "unavailable," in any
+   of the three phases. Before flagging something as missing: decide
+   whether it can reasonably be found through internet/browser research;
+   if so, ask the user's explicit permission to research it; once
+   approved, research it and populate the field from what you find; only
+   mark it genuinely unavailable if it can't be determined this way. Each
+   specialist's own instructions define its research scope and tools —
+   follow those, don't improvise a different method.
+9. No phase or stage dispatches separate Task/Agent tool subagents. Every
+   phase (SEO pipeline, copywriting, UX/UI design) and every internal stage
+   within them runs in this same continuous session — see "How this works
+   (no subagent tools)" above.

@@ -679,7 +679,12 @@ If required information is missing:
 
 -   Do not invent it.
 -   Identify exactly what is missing.
--   Ask for it when it blocks the work.
+-   Do not immediately treat it as unavailable. First decide whether it
+    can reasonably be researched externally (see the External Research
+    Permission Gate below) — if so, ask permission and research it rather
+    than asking the client or marking it for confirmation.
+-   If it can't be researched, or research doesn't resolve it, ask for it
+    when it blocks the work.
 -   Otherwise continue and clearly mark the affected output as requiring
     confirmation.
 

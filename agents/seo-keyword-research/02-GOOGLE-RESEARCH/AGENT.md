@@ -27,7 +27,10 @@ Use Google-based research to expand, validate, and contextualize the seed univer
 
 ## Google Keyword Planner
 
-Use internal browser. Before **every keyword-entry batch**, verify:
+Use internal browser, set to the Google country/domain matching the
+business's target market (see CLAUDE.md Google policy), not whatever
+country/domain the browser opens with by default. Before **every
+keyword-entry batch**, verify:
 
 - location
 - language

@@ -27,11 +27,13 @@ Understand the SERP competitive landscape and, where relevant, local search, Goo
 
 ## Competitor research
 
-Separate commercial competitors, SERP competitors, directories/aggregators, publishers/forums, and local competitors. For important queries inspect domains, page types, topical coverage, trust signals, reviews, local relevance, conversions, internal links, backlinks where available, and freshness.
+Use internal browser, set to the Google country/domain matching the
+business's target market (see CLAUDE.md Google policy). Separate commercial competitors, SERP competitors, directories/aggregators, publishers/forums, and local competitors. For important queries inspect domains, page types, topical coverage, trust signals, reviews, local relevance, conversions, internal links, backlinks where available, and freshness.
 
 ## Local SEO / GBP
 
-Only when local intent/business model justifies it, audit observable GBP completeness, categories, NAP consistency, service areas, hours, website, reviews, photos/posts, Local Pack presence, local landing pages, and citation consistency. Never invent unobserved fields.
+Use internal browser for Google Business Profile, Local Pack, and citation
+observations. Only when local intent/business model justifies it, audit observable GBP completeness, categories, NAP consistency, service areas, hours, website, reviews, photos/posts, Local Pack presence, local landing pages, and citation consistency. Never invent unobserved fields.
 
 ## Device split
 

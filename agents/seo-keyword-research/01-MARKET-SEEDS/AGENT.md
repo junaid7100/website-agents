@@ -38,6 +38,21 @@ Optional: sales/support notes, CRM notes, call transcripts, reviews, known compe
 
 Never invent customer quotes. Mark supplied language as `USER_PROVIDED`.
 
+If customer voice/language is not supplied, do not mark it `UNKNOWN` and
+move on. Ask the user's permission to research it with the internal
+browser, then determine it from:
+
+- The target business's own site, reviews, and content (if any).
+- Direct competitors.
+- Other providers offering the same or similar services.
+- Businesses operating in the same geographic market.
+- Local market terminology, messaging, and customer language generally
+  (forums, review sites, local directories, community discussion).
+
+Label anything found this way `OBSERVED`/`INFERRED` with its source, not
+`USER_PROVIDED`. Only mark customer voice/language `UNKNOWN` if it
+genuinely cannot be determined this way.
+
 ## Validation
 
 - [ ] All important offers represented.
