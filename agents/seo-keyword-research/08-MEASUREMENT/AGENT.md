@@ -51,6 +51,12 @@ engines (e.g. chatgpt.com, perplexity.ai, gemini.google.com, copilot) and
 report it separately from organic search. Log to
 `08-MEASUREMENT/AI-SEARCH-LOG.csv`. Treat results as samples, not rankings.
 
+## Device
+
+Split GSC, GA4, GBP, and Semrush position-tracking data by desktop and mobile
+(and tablet where reported), label `device` on every row, and flag pages or
+queries where mobile and desktop performance or conversion diverge.
+
 ## Optimization
 
 Possible actions include title/meta tests, content expansion, internal linking, FAQ additions, consolidation, supporting content, conversion improvements, or technical escalation. Document evidence for every action.

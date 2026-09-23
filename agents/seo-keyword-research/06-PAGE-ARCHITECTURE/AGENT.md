@@ -58,6 +58,13 @@ AI-crawler access, indexable HTML rather than script-only content). Consider
 an `llms.txt` only as optional, low-confidence. Do not add FAQ or schema
 content that isn't genuinely on the page.
 
+## Device
+
+Page briefs record any desktop vs. mobile differences in intent, SERP
+features, and Local Pack, and set mobile-specific requirements where they
+matter (mobile-first layout of answers and CTAs, tap-to-call, click-to-map,
+short-form answers). Do not design for desktop only.
+
 ## Conversion
 
 Use only genuine available trust assets. Never invent testimonials, reviews, awards, certifications, statistics, guarantees, or pricing.

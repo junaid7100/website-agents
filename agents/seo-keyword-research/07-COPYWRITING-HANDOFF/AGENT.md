@@ -50,6 +50,12 @@ requirements from stage 06 (direct answers, extractable structure, entity
 facts). Flag claims that need client verification, since AI engines quote
 what is on the page. Handoff only; no live AI-search research here.
 
+## Device handoff
+
+Pass through the device notes from the page briefs (mobile-specific intent,
+CTAs, answer length) so copy works on both desktop and mobile. Handoff only;
+no live device research here.
+
 ## Copy vs move
 
 Copy source artifacts. Do not move/delete originals. Research remains the source of truth. Refresh handoff copies when source files change.

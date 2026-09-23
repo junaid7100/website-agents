@@ -55,6 +55,13 @@ after each seed/report. If a report can't be read or a plan cap blocks it,
 ask the user to supply that report as a file in this folder; never request
 access to Downloads.
 
+## Device
+
+Follow the Device policy in CLAUDE.md. For priority keywords and
+competitors, pull desktop and mobile separately wherever a report offers a
+device option (Organic Research, Keyword Overview / SERP, and similar), add a
+`device` column, and note where a report has no device split.
+
 ## Keyword Magic Tool
 
 Use correct country/database. Preserve keyword, volume, KD, intent, CPC, SERP features, trend, and other decision-relevant fields. Do not impose universal KD/volume thresholds.
@@ -89,6 +96,7 @@ Estimate units before expensive calls; reuse data; avoid redundant calls; log es
 - [ ] Correct database/country used.
 - [ ] Required data returned.
 - [ ] Unit usage logged if exposed.
+- [ ] Reports over 300 rows were raised with the user before extracting.
 - [ ] Browser mode: filters, pages read, captured vs. total rows, and caps logged.
 - [ ] No fabricated metrics.
 - [ ] Backlink gap captured where available.

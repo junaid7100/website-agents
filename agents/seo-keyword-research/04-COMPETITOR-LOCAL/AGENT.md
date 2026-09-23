@@ -57,7 +57,7 @@ services, and reviews across listings, since AI engines draw on them.
 
 ## Device split
 
-When material, compare mobile and desktop SERPs for the same query and record ranking/feature/local-pack differences.
+Compare mobile and desktop SERPs for the important queries (always for local intent, where Local Pack and map results often differ) and record ranking, feature, and Local Pack differences, using the Device policy in CLAUDE.md. Use Semrush device options for competitor rankings where available.
 
 ## Validation
 

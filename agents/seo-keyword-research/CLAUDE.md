@@ -102,6 +102,15 @@ Before every Google Keyword Planner keyword-entry batch verify **location, langu
 
 When testing autocomplete, clear/remove the previous keyword before entering the next one.
 
+**Large-pull rule (300 rows).** After filtering, check the result count
+before extracting. If a single report or seed batch would exceed **300
+rows**, do not start extracting. Tell the user the count, the filters
+applied, and the options, then wait for their choice: (a) tighten the
+filters further, (b) extract only the top 300 by a stated sort, (c) extract
+everything in the browser anyway, accepting the token cost, or (d) the user
+supplies the data as a file in the stage folder. Also stop and ask if the
+count only becomes known mid-extraction and the 300 mark is crossed.
+
 ### Keyword Planner extraction without download
 
 Apply the same approach as Semrush browser extraction. Do not rely on
@@ -127,6 +136,15 @@ folder, or on clipboard copy:
    tell the user the exact filters and target file name; the user saves the
    file into `02-GOOGLE-RESEARCH/` or attaches it and says "done". Never
    browse or request access to Downloads.
+
+**Large-pull rule (300 rows).** After filtering, check the result count
+before extracting. If a single report or seed batch would exceed **300
+rows**, do not start extracting. Tell the user the count, the filters
+applied, and the options, then wait for their choice: (a) tighten the
+filters further, (b) extract only the top 300 by a stated sort, (c) extract
+everything in the browser anyway, accepting the token cost, or (d) the user
+supplies the data as a file in the stage folder. Also stop and ask if the
+count only becomes known mid-extraction and the 300 mark is crossed.
 
 ## Tool roles by stage (Semrush vs Google vs first-party)
 
@@ -168,6 +186,31 @@ Perplexity, Gemini, and Copilot. Rules for every stage that touches it:
   real questions, entity clarity (who/what/where), verifiable facts, sound
   structure, and crawlability by AI crawlers. Do not promise or guarantee
   AI citations, and do not use manipulative prompt-injection-style tactics.
+
+## Device policy (desktop and mobile)
+
+Desktop and mobile can return different SERPs, rankings, SERP features, Local
+Pack results, and even intent, so every stage that researches keywords or
+SERPs considers both and records which device each observation is for.
+
+- **Google (internal browser):** check important queries on desktop and on a
+  mobile viewport (use the browser's mobile emulation, then reset to desktop
+  afterwards). Record device on every SERP, autocomplete, PAA, Local Pack, and
+  AI-answer observation. Do not assume the two match.
+- **Semrush:** wherever a report offers a device option (for example
+  Organic Research, Keyword Overview / SERP analysis, Position Tracking, Site
+  Audit), pull desktop and mobile separately for priority keywords and
+  competitors, and label the device in every row. Where a metric (such as
+  Keyword Magic volume) has no device split, say so rather than implying one.
+- **Keyword Planner:** use its device breakdown where offered; otherwise note
+  that volume is not split by device.
+- **First-party (stage 08):** GSC and GA4 device splits are authoritative.
+- Store device as an explicit column/field (`device`: `desktop | mobile |
+  both | not_split`). Never merge desktop and mobile rows silently; when they
+  differ, record both and note the difference.
+- Keep the token cost sensible: run the device comparison on priority
+  queries and competitors, not on every keyword, and apply the large-pull rule
+  to each device pull separately.
 
 ## Semrush API unit budgeting
 

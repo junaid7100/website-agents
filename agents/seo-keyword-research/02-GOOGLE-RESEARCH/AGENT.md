@@ -77,7 +77,7 @@ Capture recurring questions, objections, cost, comparison, process, eligibility,
 
 For important queries record query, market, location, device, date, top URLs, domains, page types, intent, SERP features, Local Pack, Shopping, Videos, Images, PAA, AI Overview where visible, Featured Snippet, forums, content formats, common topics, conversion elements, trust elements, and freshness.
 
-When material, compare mobile vs desktop SERPs and record differences.
+Check important queries on both desktop and mobile (mobile viewport emulation, then reset), record `device` on every observation, and record differences in SERP features, Local Pack, PAA, AI answers, and ranking domains. Apply the Device policy in CLAUDE.md.
 
 ## AI search observation
 
@@ -94,9 +94,10 @@ AI search policy in CLAUDE.md.
 
 - [ ] Every KWP batch had location/language/currency verified.
 - [ ] Result rows were inspected beyond the first screen where needed.
+- [ ] Batches over 300 rows were raised with the user before extracting.
 - [ ] Keyword Planner filters recorded; rows captured vs. result count logged.
 - [ ] Autocomplete query was cleared between tests.
 - [ ] Trends seasonality assessed for important topics.
-- [ ] Device split captured where material.
+- [ ] Desktop and mobile both checked for important queries, with `device` recorded.
 - [ ] AI Overview / AI answer observations recorded for important queries.
 - [ ] Source/date retained.

@@ -41,6 +41,13 @@ brief, customer language, and Google discovery (autocomplete, PAA, related
 searches via the internal browser). Semrush volume/KD data is gathered
 later in stage 03.
 
+## Device context
+
+Note where mobile behaviour likely changes the seeds (for example "near me",
+voice-style questions, emergency or on-the-go needs) and tag such seeds with
+a likely device context. Confirm against desktop and mobile results in
+stage 02.
+
 ## VOC rule
 
 Never invent customer quotes. Mark supplied language as `USER_PROVIDED`.

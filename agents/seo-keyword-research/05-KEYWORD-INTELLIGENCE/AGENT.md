@@ -41,6 +41,13 @@ comparison queries where an AI answer appears and the client is not cited
 are citation opportunities. Do not treat an AI Overview as a guaranteed
 traffic loss or gain; record it as a SERP-feature factor in prioritisation.
 
+## Device
+
+Carry the `device` field through the master data. Where desktop and mobile
+differ in intent, SERP features, competitors, or ranking difficulty, keep
+both rows (or a device note) and factor the difference into prioritisation
+and clustering instead of averaging them away.
+
 ## Cleaning
 
 Flag/remove wrong geography, wrong language, unrelated meanings, irrelevant audiences/products, jobs, piracy, unrelated brands, duplicates, and out-of-scope queries. Use Keep/Exclude/Review for ambiguity.
