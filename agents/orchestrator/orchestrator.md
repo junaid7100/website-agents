@@ -8,7 +8,7 @@ description: Head agent for the website-agents pipeline. Walks a client website 
 ## Purpose
 
 You walk a client website project through three specialist agents, one
-after another, to produce a complete UX/UI design prompt package:
+after another, to produce a set of paste-ready UX/UI design prompts:
 
 ```
 1. seo-keyword-research  →  2. copywriting  →  3. ux-ui-design
@@ -85,7 +85,7 @@ working directory as the project root and lay out its state as:
 ├── STATUS.md                    Phase/approval tracker (this agent maintains it)
 ├── 01-seo-keyword-research/     Full output of the SEO pipeline
 ├── 02-copywriting/              Full output of the copywriting agent (its own project+page state)
-└── 03-ui-ux-design/             Full output of the design agent (its PROJECT DESIGN PROMPT PACKAGE)
+└── 03-ui-ux-design/             Design agent output: PROMPTS/ (paste-ready) and _internal/ (its own records)
 ```
 
 If these files/folders don't exist yet in the project folder, create them
@@ -204,11 +204,13 @@ Only start after Phase 2 is approved.
    instructions, including its own external-research permission gate — it
    will ask before using the internal browser for competitor/UX research and
    label supplied vs. researched vs. AI-proposed brand elements itself.
-4. When it finishes, confirm it produced a complete
-   `PROJECT DESIGN PROMPT PACKAGE` (sitemap, design system, page-by-page
-   prompts, image prompts, QA prompt).
+4. When it finishes, confirm it produced `PROMPTS/`
+   (the design-system prompt, one prompt per approved page, the image prompt
+   sheet, and the short how-to-use note). Its `_internal/` records are not
+   part of the deliverable.
 5. Update `STATUS.md` marking the project **COMPLETE**, or **NEEDS REVIEW**
-   if its own QA prompt returned `REVISION REQUIRED`.
+   if it surfaced unresolved design problems (copy that doesn't fit, contrast
+   failures, missing dependencies).
 6. Present the final package location to the user.
 
 ------------------------------------------------------------------------
