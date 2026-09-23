@@ -57,7 +57,9 @@ internal browser path, do not rely on Export or clipboard Copy. Instead:
    scope) and apply those filters in Semrush before reading anything. Never
    pull a whole report by default. Set the database/country, filters, and
    sort; record them. Set rows-per-page to the maximum offered.
-2. Read the rendered table (`get_page_text` / `read_page`) page by page and
+2. Read the rendered table (`get_page_text` / `read_page`), using the
+   tool's pagination (or scrolling) whenever the filtered results span more
+   than one page, and
    write the rows straight into the stage's CSV inside the project folder
    (e.g. `03-SEMRUSH-RESEARCH/keyword-magic.csv`). Save after every page so a
    broken session loses nothing. Dedupe on keyword.
@@ -111,8 +113,9 @@ folder, or on clipboard copy:
    text include/exclude, monthly search range, competition, brand/non-brand
    exclusions, ideas vs. supplied seeds) so only relevant rows are shown.
    Record the filters and sort. Never pull the full idea list by default.
-2. Read the rendered table (`get_page_text` / `read_page`), scrolling or
-   paginating the filtered results, and write rows straight into
+2. Read the rendered table (`get_page_text` / `read_page`), using the
+   tool's pagination (or scrolling) whenever the filtered results span more
+   than one page, and write rows straight into
    `02-GOOGLE-RESEARCH/keyword-planner.csv` in the project. Save after each
    batch and dedupe on keyword.
 3. Verify captured rows against the result count shown, log captured vs.
