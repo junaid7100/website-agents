@@ -85,7 +85,7 @@ working directory as the project root and lay out its state as:
 ├── STATUS.md                    Phase/approval tracker (this agent maintains it)
 ├── 01-seo-keyword-research/     Full output of the SEO pipeline
 ├── 02-copywriting/              Full output of the copywriting agent (its own project+page state)
-└── 03-ui-ux-design/             Design agent output: PROMPTS/ (paste-ready) and _internal/ (its own records)
+└── 03-ui-ux-design/             Design agent output: project-state/ (brand system + records) and pages/<PAGE_ID>/ (specs + AI-DESIGN-PROMPT.md)
 ```
 
 If these files/folders don't exist yet in the project folder, create them
@@ -204,10 +204,10 @@ Only start after Phase 2 is approved.
    instructions, including its own external-research permission gate — it
    will ask before using the internal browser for competitor/UX research and
    label supplied vs. researched vs. AI-proposed brand elements itself.
-4. When it finishes, confirm it produced `PROMPTS/`
-   (the design-system prompt, one prompt per approved page, the image prompt
-   sheet, and the short how-to-use note). Its `_internal/` records are not
-   part of the deliverable.
+4. When it finishes, confirm it produced `project-state/`
+   (`BRAND-GUIDE.md`, `DESIGN-SYSTEM.md`, `ASSET-INVENTORY.md`, etc.) and,
+   for each approved page, `pages/<PAGE_ID>/` with its specs and the
+   paste-ready `AI-DESIGN-PROMPT.md`.
 5. Update `STATUS.md` marking the project **COMPLETE**, or **NEEDS REVIEW**
    if it surfaced unresolved design problems (copy that doesn't fit, contrast
    failures, missing dependencies).

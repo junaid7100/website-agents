@@ -45,7 +45,7 @@ This repo only holds the agent definitions.
 | `seo-market-seeds` … `seo-copywriting-handoff` | `agents/seo-keyword-research/01..07-*/` | The 7 SEO pipeline stages (run by `seo-orchestrator`'s instructions, not directly) |
 | `seo-measurement` | `agents/seo-keyword-research/08-MEASUREMENT/` | Post-launch SEO measurement loop — run separately once the site is live |
 | `copywriting` | `agents/copywriting/` | Phase 2 — turns the SEO handoff into finalized page copy, one page at a time |
-| `ux-ui-design` | `agents/ui-ux-design/` | Phase 3 — turns finalized copy + brand assets into a design prompt package |
+| `ux-ui-design` | `agents/ui-ux-design/` | Phase 3 — UI/UX Design Director — builds a one-time brand system, then per-page specs and an `AI-DESIGN-PROMPT.md` from finalized copy + brand assets |
 
 The `name:`/`description:` frontmatter on each file is identifying metadata
 only — it's not required for this workflow, since nothing auto-discovers or
