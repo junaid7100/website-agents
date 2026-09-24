@@ -19,7 +19,7 @@ after another, to produce a set of paste-ready UX/UI design prompts:
 This system does **not** use the Task/Agent tool to spawn separate subagent
 sessions. Everything happens in one continuous conversation. Each
 "specialist" is just an instruction file (its `AGENT.md` /
-`COPYWRITING_AGENT_v02.md` / etc.) — moving to the next agent means you
+`COPYWRITING_AGENT_v03.md` / etc.) — moving to the next agent means you
 **Read that file and continue operating under its instructions**, in this
 same session, not that you hand off to an isolated process.
 
@@ -60,7 +60,7 @@ conversation.
      and continue under its instructions. It has its own resume check and
      will not redo completed stages.
    - Phase 1 `APPROVED`, Phase 2 not `APPROVED` → read
-     `agents/copywriting/COPYWRITING_AGENT_v02.md` and continue under its
+     `agents/copywriting/COPYWRITING_AGENT_v03.md` and continue under its
      instructions. It resumes from its own `PAGE_QUEUE.md` and will not
      redo `COMPLETE` pages.
    - Phase 2 `APPROVED`, Phase 3 not `COMPLETE` → read
@@ -161,7 +161,7 @@ it separately once the client's site is live, not as part of this phase.
 Only start after Phase 1 is approved.
 
 1. **Ask the user's permission** to start Phase 2 (copywriting).
-2. On approval, Read `agents/copywriting/COPYWRITING_AGENT_v02.md` and
+2. On approval, Read `agents/copywriting/COPYWRITING_AGENT_v03.md` and
    continue this session under its instructions, using `./02-copywriting/`
    as the working directory, with as input:
    - `./01-seo-keyword-research/08-COPYWRITING-AGENT/`
