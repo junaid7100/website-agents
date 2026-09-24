@@ -29,6 +29,17 @@ Research         Research         & Local SEO
               08 Measurement
 ```
 
+## Adaptive model
+
+One pipeline, made adaptive rather than duplicated per industry:
+
+```text
+Business input → 00 profile → research strategy → module activation → relevance policy
+→ 01 seed families → 02/03/04 raw + candidates → 05 decide → 06 architect → 07 execute
+```
+
+Agent 00 writes `business-profile.json`, `research-strategy.json` and `business-relevance-policy.json`; agents 01–07 read them first (Context Adaptation) and change behaviour accordingly. Authority: 00 profile+configure, 01–04 evidence, 05 keyword decisions, 06 page/URL decisions, 07 execution handoff. Rules are in `CLAUDE.md`; field lists, vocabularies and the module catalogue are in `SCHEMAS.md`. To support a new business type, add a characteristic and (if needed) a module row in `SCHEMAS.md`; do not fork the pipeline.
+
 ## Fresh-session operation
 
 Every stage can run in a new Claude Code session. The handoff mechanism is the filesystem: manifest, briefs, CSV datasets, analyses, page briefs, and handoff package.

@@ -11,6 +11,9 @@
 - Highest-value offers:
 - Revenue-driving offers:
 - Excluded offers:
+- Confirmed offerings (services/products the client has confirmed):
+- Unconfirmed / uncertain offerings (list each; these go to the confirmation queue):
+- Known limitations (what the business does NOT do, areas it does not serve, audiences it does not serve):
 
 ## Audience
 - Target audience:
@@ -27,6 +30,14 @@
 - Language:
 - Currency:
 - National/local/international:
+
+## Business profile inputs
+- Business model(s) (may be several): 
+- Revenue model:
+- Sales cycle:
+- Catalogue size (how many services/products):
+- Physical locations / service area / delivery area:
+- Online purchase, booking or signup available (yes / no / unknown):
 
 ## Conversion
 - Primary CTA:

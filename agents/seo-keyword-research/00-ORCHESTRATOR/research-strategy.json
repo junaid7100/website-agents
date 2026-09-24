@@ -1,0 +1,36 @@
+{
+  "_readme": "Template. Agent 00 derives this from business-profile.json. Every module has a reason; do not activate a module merely because it exists. Module list and shapes: ../SCHEMAS.md section 4. Hybrids: activate the union of relevant modules and explain overlaps in reason.",
+  "status": "NOT_STARTED",
+  "derived_from_profile_version": "",
+  "last_updated": "",
+
+  "modules": {
+    "service_keyword_research": { "state": "ENABLED|DISABLED|CONDITIONAL", "priority": "CRITICAL|HIGH|MEDIUM|LOW|DISABLED", "depth": "DEEP|STANDARD|LIGHT|CONDITIONAL|NONE", "reason": "", "trigger": "", "dependencies": [] }
+  },
+
+  "_modules_to_evaluate": [
+    "service_keyword_research", "local_keyword_research", "location_modifier_research", "near_me_research", "local_pack_analysis", "google_business_profile_analysis",
+    "product_keyword_research", "category_keyword_research", "product_attribute_research",
+    "problem_solution_research", "informational_research",
+    "comparison_research", "alternative_research", "feature_research", "integration_research", "use_case_research",
+    "price_cost_research", "review_research", "brand_search_research",
+    "autocomplete_research", "keyword_planner_research", "google_trends_research", "paa_research", "related_searches_research",
+    "competitor_keyword_research", "keyword_gap_research", "content_gap_research", "backlink_gap_research",
+    "serp_analysis", "mobile_desktop_serp_comparison", "ai_search_visibility"
+  ],
+
+  "seed_families_active": [],
+  "competitor_types_active": ["BUSINESS", "SERP"],
+  "intent_priorities": { "highest_value": [], "supporting": [], "low_value": [], "reason": "" },
+  "page_types_in_scope": [],
+  "page_types_out_of_scope": [],
+  "negative_term_policy": { "patterns_active": [], "patterns_inactive": [], "reason": "Generated from the business-relevance-policy; never a universal list." },
+  "scoring_profile": {
+    "enabled": false,
+    "purpose": "sorting / triage / review prioritisation only; never a keep/reject or create-page threshold",
+    "dimensions": [ { "name": "", "weight": 0 } ],
+    "reason": ""
+  },
+  "decision_dimensions_in_use": [],
+  "blocking_unknowns": []
+}

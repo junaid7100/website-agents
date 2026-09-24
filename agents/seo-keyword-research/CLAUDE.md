@@ -35,6 +35,77 @@ This repository is a modular SEO keyword-research system. Every specialist agent
     stage's research and processing happens inside the current session by
     Reading that stage's own `AGENT.md` and following it directly — see
     "How stages actually run" in `00-ORCHESTRATOR/AGENT.md`.
+14. Behaviour is adaptive: see "Adaptive framework" below. Agent 00 profiles
+    the business and configures the research; agents 01–07 consume that
+    configuration and never assume a business type.
+
+## Adaptive framework (universal principles, business-dependent behaviour)
+
+One pipeline, `00 → 07`. The principles below are universal. *Which research methods run, how deep, which filters apply and which page types are considered* is business-dependent and is decided once, by Agent 00, from the business itself. Field shapes, vocabularies, the module catalogue and pattern libraries are in `SCHEMAS.md`.
+
+**Authority model (mandatory).** `00` = profile + configure + orchestrate. `01–04` = evidence. `05` = keyword decisions. `06` = page/URL architecture decisions. `07` = content execution handoff. A stage may not take another stage's decisions: 01–04 gather and pre-screen but never final-select; 05 never creates URLs; 06 never creates pages from volume alone; 07 never restarts keyword research.
+
+**Central config.** Agent 00 writes `business-profile.json`, `research-strategy.json`, and `business-relevance-policy.json` (all in `00-ORCHESTRATOR/`) and tracks them in `PROJECT-MANIFEST.md`, which is the research manifest. Downstream agents consume these files and do not re-derive the business type themselves.
+
+### Context Adaptation (every agent 01–07 does this first)
+
+1. Read `business-profile.json`, `research-strategy.json`, `business-relevance-policy.json`, and `PROJECT-MANIFEST.md`. If any is missing or not `COMPLETE`, the stage is `BLOCKED`.
+2. List enabled, disabled and conditional modules with their priority and depth; adapt terminology, filters, depth and priorities to them.
+3. Do not run research merely because this agent is capable of it. A `DISABLED` module is skipped; a `CONDITIONAL` one runs only when its recorded trigger fires (log that it fired).
+4. Do not assume local, product, SaaS, B2B, B2C, e-commerce, service or informational importance without project evidence. Preserve `UNKNOWN`.
+5. Anything blocking that depends on an unknown business fact goes to `CLIENT-CONFIRMATION-QUEUE.csv` (see SCHEMAS.md), not into an assumption.
+6. If the evidence you gather contradicts the profile or strategy, do not silently override it. Record it and raise it with Agent 00 / the user.
+
+### Universal principles
+
+Understand the business before deep research. Never fabricate data. Preserve source lineage and raw research. Filter progressively. Determine intent. Judge business relevance before metrics. Use SERPs where intent is unclear. Cluster by intent and user need, not wording. Avoid needless permutations and needless pages. Prevent cannibalisation. Keep keyword opportunity, page opportunity and keyword repetition as three separate questions. Preserve uncertainty and flag missing business information. Optimise for qualified opportunities, not keyword quantity.
+
+Distinctions that must never be collapsed: discovered ≠ relevant; relevant ≠ strategically important; important ≠ needs its own page; needs its own page ≠ needs exact-match repetition; a research method exists ≠ this business needs it.
+
+### Controlled funnel and progressive filtering
+
+```
+Business understanding → profile → strategy → seed families → controlled discovery
+→ relevance → business eligibility → intent → candidates → cross-source dedup
+→ clusters → SERP validation → primary/secondary → page map → content handoff
+```
+
+- Each discovery agent (01–04) keeps a **raw** dataset (traceability, QA, audit, discarded-term checks, attribution) and produces a **candidate** dataset. Raw never becomes the working set. Downstream stages work from candidates; a later stage may not start merely because raw files exist.
+- Research effort narrows as the set shrinks: broad automated discovery early, cheap filtering next, expensive/manual validation (SERPs, Trends, competitor page review) only where it could change a decision. No keyword is automatically owed Autocomplete, Trends, SERP, Semrush or competitor work. Work from representative keywords and clusters; keywords of the same evident intent are one candidate family until SERP evidence shows materially different intent.
+- Do not generate the full product of offering × synonym × modifier × location × audience × attribute. Generate representative seed families and let the tools reveal real patterns; test representative combinations.
+- Funnel counts are illustrative; never force quotas. Research quality is judged by relevance, intent accuracy, evidence quality, cluster quality, decision usefulness, conversion relevance and traceability, not by keyword count.
+
+### Keyword decision rules
+
+1. **Business eligibility is the first hard gate:** can this business genuinely satisfy the searcher's intent? `YES` continue; `NO` reject; `UNKNOWN` → `REVIEW — CLIENT CONFIRMATION` and queue entry. Never infer a capability from volume, tool suggestions or competitor rankings. Metrics never override this gate.
+2. Use the standard decision states in SCHEMAS.md, always with a recorded reason. Never bare Keep/Delete.
+3. No universal volume, KD or CPC thresholds. Zero or low volume is not rejection (local and niche data is sparse); volume, KD and CPC are evidence and prioritisation inputs, never sole keep/remove criteria. Lack of volume or Trends data is not proof of zero demand.
+4. Negative terms and out-of-scope audiences come from the project's relevance policy, never from a universal list. DIY, informational, product, comparison, location and branded intent have no fixed value; they are read through the business profile.
+5. Intent value is business-dependent (local transactional for a contractor, product transactional for e-commerce, comparison/use-case for SaaS, informational for a publisher). Keep informational/content keywords separate from core commercial targets, but do not discard them.
+6. Competitor and tool data is evidence, not instruction: a competitor ranking for a term does not make it relevant; a competitor page or architecture is not a requirement for the client.
+7. Multiple independent sources raise confidence, not strategic importance. Never lose source lineage in deduplication.
+
+### Tool roles
+
+Each tool has a job, and none is a mandatory pass for every keyword.
+
+- **Autocomplete:** discover search language, modifiers, terminology, long-tail patterns, offering×modifier combinations. Representative seeds only; no default A–Z (except the existing informational-long-tail exception); no recursive expansion without a specific reason.
+- **Keyword Planner:** expand seed concepts, related terminology, Google demand evidence, CPC/competition as secondary commercial signals, geographic demand where data exists.
+- **Google Trends:** only to answer a research question: terminology comparison, offering/category comparison, seasonality, direction, regional variation. Insufficient data is recorded as `TREND DATA INSUFFICIENT`, never as no demand.
+- **Semrush:** expansion, intent, volume/KD/CPC evidence, competitor keyword discovery, SERP analysis, gaps, organic competitors.
+- **Google SERPs:** validate intent, page types, SERP overlap, Local Pack behaviour (where the module is active), directories/aggregators, whether keywords share a page, and final primary-keyword candidates.
+
+### Research depth
+
+Each active module has a priority and depth in `research-strategy.json` (`DEEP | STANDARD | LIGHT | CONDITIONAL | NONE`). Depth answers *how far*, enablement answers *whether*. Concentrate deep/manual work where it could change a strategic decision.
+
+### Client-confirmation system
+
+Capability unknowns that block or materially change a decision are recorded in `00-ORCHESTRATOR/CLIENT-CONFIRMATION-QUEUE.csv` by whichever stage finds them (fields in SCHEMAS.md). Agent 00 reports open items at each checkpoint. Answered items update the profile, policy and downstream datasets; downstream stages treat open items as `UNKNOWN`.
+
+### Non-negotiables
+
+Never fabricate keyword metrics. Never infer a business capability from a keyword. Never create a page solely because a keyword exists. Never use volume or KD as the sole selection criterion. Never run every keyword through every tool. Never recursively expand autocomplete without reason. Never merge keywords only because they look similar, or split them only because wording differs; use SERP intent and overlap when boundaries are uncertain. Never let an unknown capability be silently assumed. Prevent service, location, product, category and use-case pages from accidentally targeting the same intent. The objective is the smallest useful set of keyword clusters and pages that captures the relevant demand for *this* business, not the largest keyword list.
 
 ## Semrush policy
 
@@ -160,6 +231,8 @@ supplies the data as a file in the stage folder. Also stop and ask if the
 count only becomes known mid-extraction and the 300 mark is crossed.
 
 ## Tool roles by stage (Semrush vs Google vs first-party)
+
+This table says which tool is primary at each stage. Whether a given report or module runs at all, and how deep, is set by `research-strategy.json`.
 
 Each tool has a defined role per stage. Semrush is access-gated by the
 Semrush policy above (MCP/API, internal browser, or user-supplied exports, as chosen by the user each time); Google tools use the internal browser per the Google policy.

@@ -6,8 +6,8 @@ Agents communicate through explicit files. A new session must understand the pro
 
 ## Every agent must
 
-1. Read the manifest.
-2. Read declared input files.
+1. Read the manifest and the config files (`business-profile.json`, `research-strategy.json`, `business-relevance-policy.json`).
+2. Read declared input files (candidate datasets, not raw files, unless verifying).
 3. Validate input completeness.
 4. Perform only assigned work.
 5. Write declared outputs.
@@ -23,9 +23,17 @@ Agents communicate through explicit files. A new session must understand the pro
 
 When a source artifact materially changes, downstream artifacts depending on it become `STALE` until refreshed.
 
+## Raw vs candidate
+
+Discovery stages (02–04) preserve raw datasets and produce candidate datasets. Downstream stages consume candidates; raw files are for traceability and audit. A stage may not start merely because raw files exist.
+
+## Confirmation queue
+
+Unknown business capabilities go to `00-ORCHESTRATOR/CLIENT-CONFIRMATION-QUEUE.csv`, not into assumptions. Downstream stages treat open items as `UNKNOWN`.
+
 ## Data lineage
 
-Major datasets should preserve source, collection date, market/location, language, device where relevant, and notes.
+Major datasets should preserve every source a record came from (lineage survives deduplication), collection date, market/location, language, device where relevant, and notes.
 
 ## Failure behavior
 

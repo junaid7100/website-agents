@@ -1,0 +1,17 @@
+{
+  "_readme": "Template. Project-specific. Defines what this project treats as CORE / RELEVANT / CONDITIONAL / IRRELEVANT / UNKNOWN. Keyword business eligibility (YES/NO/UNKNOWN) is decided against this file. Anything CONDITIONAL or UNKNOWN needs a CLIENT-CONFIRMATION-QUEUE.csv entry.",
+  "status": "NOT_STARTED",
+  "last_updated": "",
+  "core": [ { "offering": "", "evidence": [] } ],
+  "relevant": [ { "offering": "", "evidence": [] } ],
+  "conditional": [ { "offering": "", "needs": "client confirmation", "queue_id": "" } ],
+  "irrelevant": {
+    "offerings": [],
+    "audiences": [],
+    "geographies": [],
+    "intents": [],
+    "notes": "Only what is explicitly unsupported or out of the target market. DIY, jobs, informational, product, comparison, branded intents are listed here ONLY if this project actually excludes them."
+  },
+  "unknown": [ { "capability": "", "why_unknown": "", "queue_id": "" } ],
+  "intent_notes": "How each intent class is valued for THIS business (from the profile)."
+}

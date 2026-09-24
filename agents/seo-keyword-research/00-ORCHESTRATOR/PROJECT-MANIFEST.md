@@ -25,6 +25,38 @@
 - Last completed stage: `NONE`
 - Last updated: `{{TIMESTAMP}}`
 
+## Configuration status
+| Config file | Status | Last updated | Notes |
+|---|---|---|---|
+| business-profile.json | `NOT_STARTED` | | |
+| research-strategy.json | `NOT_STARTED` | | |
+| business-relevance-policy.json | `NOT_STARTED` | | |
+| CLIENT-CONFIRMATION-QUEUE.csv | `NOT_STARTED` | | open items: 0 |
+
+## Modules (from research-strategy.json)
+| Module | State (`ENABLED/DISABLED/CONDITIONAL`) | Priority | Depth | Reason / trigger |
+|---|---|---|---|---|
+| | | | | |
+
+## Stage gates
+| Gate | Description | Status | Date |
+|---|---|---|---|
+| A | Business understanding complete | `NOT_STARTED` | |
+| B | Seed families approved | `NOT_STARTED` | |
+| C | Discovery complete (raw + candidates per active stage) | `NOT_STARTED` | |
+| D | Candidate datasets ready for 05 | `NOT_STARTED` | |
+| E | Intelligence complete (clusters, roles, SERP-validated) | `NOT_STARTED` | |
+| F | Architecture complete (ownership, cannibalisation) | `NOT_STARTED` | |
+
+## Open items
+- Client confirmation items open: `{{COUNT}}` (see `CLIENT-CONFIRMATION-QUEUE.csv`)
+- SERP review items open: `{{COUNT_OR_LIST}}`
+- Pending / blocked agents: `{{LIST}}`
+
+## Data sources and evidence
+- Sources used (with dates and market/device): `{{LIST}}`
+- Evidence status (which conclusions are CONFIRMED_CLIENT_FACT vs AGENT_INFERENCE): `{{NOTE}}`
+
 ## Stage status
 | Stage | Agent | Status | Last run | Notes |
 |---|---|---|---|---|

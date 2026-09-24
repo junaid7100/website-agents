@@ -1,0 +1,57 @@
+{
+  "_readme": "Template. Agent 00 fills this in place per project. Every conclusion carries value + confidence + evidence. Keep UNKNOWN as UNKNOWN. Multi-valued fields are lists: hybrids keep every value. Evidence types and vocabularies: see ../SCHEMAS.md.",
+  "status": "NOT_STARTED",
+  "last_updated": "",
+  "business_identity": { "name": "", "domain": "", "description": "" },
+
+  "business_models": [
+    { "value": "Local Service | Professional Service | National Service | B2B | B2C | SaaS | E-commerce | Marketplace | Publisher | Manufacturer | Product Supplier | Equipment Hire / Rental | Multi-location | Franchise | Hybrid | Other", "importance": "CRITICAL|HIGH|MEDIUM|LOW", "confidence": "HIGH|MEDIUM|LOW", "evidence": [] }
+  ],
+  "revenue_models": [
+    { "value": "Project | Service | Hourly | Retainer | Subscription | Product Sale | Rental | Commission | Advertising | Lead Generation | Hybrid | Unknown", "confidence": "", "evidence": [] }
+  ],
+  "primary_conversions": [
+    { "value": "Phone Call | Contact Form | Quote Request | Booking | Purchase | Demo | Signup | Free Trial | Subscription | Store Visit | Email | Other", "priority": "PRIMARY|SECONDARY", "confidence": "", "evidence": [] }
+  ],
+  "audiences": [
+    { "value": "B2C | B2B | Both | Government/Public Sector | Other | Unknown", "segments": [], "confidence": "", "evidence": [] }
+  ],
+  "offering_structure": { "value": "Services | Products | Software | Information | Bookings | Rentals | Marketplace Access | Multiple | Other", "confidence": "", "evidence": [] },
+  "geographic_scope": { "value": "Hyperlocal | Local | Regional | National | International | Mixed | Unknown", "confidence": "", "evidence": [] },
+  "physical_presence": { "value": "No physical location | One physical location | Multiple physical locations | Service-area business | Hybrid | Unknown", "confidence": "", "evidence": [] },
+  "service_area_structure": { "value": "No geographic restriction | Single local area | Multiple towns/cities | Regional | National | International | Mixed | Unknown", "confidence": "", "evidence": [] },
+  "sales_cycle": { "value": "Immediate | Short | Medium | Long | Unknown", "confidence": "", "evidence": [] },
+  "catalogue_complexity": { "value": "Single offering | Small offering set | Medium offering set | Large catalogue | Marketplace-scale | Unknown", "confidence": "", "evidence": [] },
+
+  "seo_characteristics": {
+    "_scale": "CRITICAL | HIGH | MEDIUM | LOW | IRRELEVANT | UNKNOWN. Do not guess where evidence is thin.",
+    "local_seo": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "transactional_seo": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "commercial_investigation": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "informational_seo": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "branded_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "non_branded_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "problem_solution_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "product_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "category_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "service_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "location_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "near_me_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "comparison_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "alternative_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "feature_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "integration_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "use_case_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "review_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] },
+    "price_cost_search": { "value": "UNKNOWN", "confidence": "LOW", "evidence": [] }
+  },
+
+  "known_services": [ { "name": "", "status": "CONFIRMED|UNCONFIRMED|NOT OFFERED", "evidence": [] } ],
+  "known_products": [ { "name": "", "status": "CONFIRMED|UNCONFIRMED|NOT OFFERED", "evidence": [] } ],
+  "known_locations": [ { "name": "", "type": "office|service area|store|other", "status": "CONFIRMED|UNCONFIRMED", "evidence": [] } ],
+  "known_capabilities": [],
+  "unknown_capabilities": [ { "capability": "", "why_it_matters": "", "queue_id": "" } ],
+  "business_constraints": [],
+  "client_priorities": [],
+  "open_profile_unknowns": []
+}
