@@ -88,12 +88,39 @@ working directory as the project root and lay out its state as:
 ├── STATUS.md                    Phase/approval tracker (this agent maintains it)
 ├── 01-seo-keyword-research/     Full output of the SEO pipeline
 ├── 02-copywriting/              Full output of the copywriting agent (its own project+page state)
-└── 03-ui-ux-design/             Design agent output: project-state/ (brand system + records) and pages/<PAGE_ID>/ (specs + AI-DESIGN-PROMPT.md)
+└── 03-ui-ux-design/             Design agent output: project-state/ (brand system + records) and pages/<PAGE_KEY>/ (e.g. PAGE-001-homepage/, files prefixed with the key)
 ```
 
 If these files/folders don't exist yet in the project folder, create them
 when each phase first needs them. Do not create them inside the
 website-agents repo itself — that repo only holds the agent definitions.
+
+**Page naming.** All per-page folders and files use the page key
+(code + name) — see below. Enforce it when confirming each phase's output.
+
+### Page Naming Convention
+
+Every page has a **page code** and a **page name (slug)**, always used
+together as the **page key**: `PAGE-001-homepage`, `PAGE-014-driveway-paving`.
+
+- **Code:** `PAGE-NNN`, assigned once by SEO stage 06 in
+  `KEYWORD-TO-PAGE-MAP.csv` (`page_id` column), sequential. Never reused,
+  never renumbered. Pages added later (Expansion Mode) take the next number.
+- **Name:** lowercase kebab-case slug from the page's final URL segment (the
+  homepage is `homepage`). If the URL/name later changes, the code stays; the
+  new slug is recorded in `SITE_INDEX.md` and the folder and files are renamed
+  together.
+- **Folders:** every per-page folder is named with the full page key, e.g.
+  `pages/PAGE-001-homepage/`.
+- **Files:** every per-page file is prefixed with the page key and a double
+  underscore, e.g. `PAGE-001-homepage__FINAL_COPY.md`,
+  `PAGE-001-homepage__AI-DESIGN-PROMPT.md`. In agent specs, bare names such as
+  `FINAL_COPY.md` or `HANDOFF.md` are document types; on disk they always
+  carry the prefix.
+- **Project-level files** (`STATUS.md`, `SITE_INDEX.md`, `PAGE_QUEUE.md`,
+  `BRAND-GUIDE.md`, etc.) are not per-page and are not prefixed. Indexes and
+  queues list the page key, and every file path recorded in them uses the
+  prefixed name.
 
 Each specialist agent keeps its own internal file/folder conventions (defined
 in its own instruction file under `agents/<category>/`) — do not rewrite
@@ -209,8 +236,8 @@ Only start after Phase 2 is approved.
    label supplied vs. researched vs. AI-proposed brand elements itself.
 4. When it finishes, confirm it produced `project-state/`
    (`BRAND-GUIDE.md`, `DESIGN-SYSTEM.md`, `ASSET-INVENTORY.md`, etc.) and,
-   for each approved page, `pages/<PAGE_ID>/` with its specs and the
-   paste-ready `AI-DESIGN-PROMPT.md`.
+   for each approved page, `pages/<PAGE_KEY>/` with its specs and the
+   paste-ready `<PAGE_KEY>__AI-DESIGN-PROMPT.md`.
 5. Update `STATUS.md` marking the project **COMPLETE**, or **NEEDS REVIEW**
    if it surfaced unresolved design problems (copy that doesn't fit, contrast
    failures, missing dependencies).

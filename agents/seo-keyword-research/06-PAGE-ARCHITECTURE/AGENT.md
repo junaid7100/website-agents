@@ -69,6 +69,8 @@ Use only genuine trust assets. Never invent testimonials, reviews, awards, certi
 - `06-PAGE-ARCHITECTURE/WEBSITE-PAGE-INVENTORY.md`
 - `KEYWORD-TO-PAGE-MAP.csv` (URL, page type, primary keyword, secondary keywords, cluster ID, search intent, geographic target if any, page purpose, supporting topics, internal links in/out, potential cannibalisation, evidence, confidence)
 - `PAGE-ARCHITECTURE.md`, `PAGE-BRIEFS/`
+
+**Page codes.** Assign every page a `page_id` (`PAGE-001`, sequential, never reused) and a slug from its URL, and add both as columns in `KEYWORD-TO-PAGE-MAP.csv` and `WEBSITE-PAGE-INVENTORY.md`. Name each brief `PAGE-BRIEFS/<page_id>-<slug>.md` (e.g. `PAGE-001-homepage.md`). See the Page Naming Convention in `../HANDOFF-CONTRACT.md`.
 - `ARCHITECTURE-DECISIONS.md` (why each page exists, why each cluster got no page or a Future Opportunity, cannibalisation resolutions, service/location/product/category relationships)
 
 ## Blocking conditions

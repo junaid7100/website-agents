@@ -82,15 +82,22 @@ Write inside the working folder you were pointed at (e.g.
 │   ├── DESIGN-DECISIONS.md        Reusable decisions log (Section 15)
 │   ├── PAGE-DESIGN-INDEX.md       Status/depth/QA per page (Section 15)
 │   └── PROJECT-NOTES.md, RESEARCH.md, CONTENT-INTEGRITY.md, DEPENDENCIES.md
-└── pages/<PAGE_ID>/               One folder per page
-    ├── DESIGN-BRIEF.md
-    ├── SECTION-SPEC.md
-    ├── IMAGE-PLAN.md
-    ├── RESPONSIVE-SPEC.md
-    ├── COMPONENTS.md
-    ├── DESIGN-QA.md
-    └── AI-DESIGN-PROMPT.md        The primary deliverable — the user pastes this
+└── pages/<PAGE_KEY>/              One folder per page, e.g. PAGE-001-homepage/
+    ├── <PAGE_KEY>__DESIGN-BRIEF.md
+    ├── <PAGE_KEY>__SECTION-SPEC.md
+    ├── <PAGE_KEY>__IMAGE-PLAN.md
+    ├── <PAGE_KEY>__RESPONSIVE-SPEC.md
+    ├── <PAGE_KEY>__COMPONENTS.md
+    ├── <PAGE_KEY>__DESIGN-QA.md
+    └── <PAGE_KEY>__AI-DESIGN-PROMPT.md   The primary deliverable — the user pastes this
 ```
+
+**Naming.** `<PAGE_KEY>` is the page code plus slug used by SEO and
+copywriting (`PAGE-001-homepage`); reuse it exactly, never invent codes. Every
+per-page folder and file carries the key, as shown. Bare names elsewhere in
+this spec (`AI-DESIGN-PROMPT.md`, `SECTION-SPEC.md`, ...) are document types
+and always take the `<PAGE_KEY>__` prefix on disk. `PAGE-DESIGN-INDEX.md`
+lists the page key and prefixed paths.
 
 `AI-DESIGN-PROMPT.md` is self-contained: it carries the relevant brand,
 colour, typography, layout, component and image direction itself, so no
@@ -154,7 +161,7 @@ points you at the copywriting project folder (e.g. `02-copywriting/`):
 │                               use for navigation/IA.
 ├── CLAIMS_REGISTRY.md         Only VERIFIED claims are real proof; ignore
 │                               NEEDS CONFIRMATION / UNSUPPORTED.
-└── pages/PAGE-.../FINAL_COPY.md   SEO title, meta, H1, full copy, H2/H3
+└── pages/PAGE-NNN-<slug>/PAGE-NNN-<slug>__FINAL_COPY.md   SEO title, meta, H1, full copy, H2/H3
                                     hierarchy, CTA copy, FAQ copy.
 ```
 
@@ -435,14 +442,14 @@ generic "AI website" decoration.
 
 # 10. Page Outputs — Specs and AI-DESIGN-PROMPT.md
 
-Per page, create the seven files in `pages/<PAGE_ID>/` (Section 1.3).
+Per page, create the seven files in `pages/<PAGE_KEY>/` (Section 1.3).
 `AI-DESIGN-PROMPT.md` is the primary deliverable, self-contained because the
 downstream AI won't remember other pages. Only pages `DESIGN-HANDOFF.md`
 marks ready.
 
 ## 10.1 Planning files
 
-For each page, in `pages/<PAGE_ID>/` (LIGHT pages may collapse these into one `DESIGN-BRIEF.md`):
+For each page, in `pages/<PAGE_KEY>/` (LIGHT pages may collapse these into one `DESIGN-BRIEF.md`):
 
 - `DESIGN-BRIEF.md`: page, URL, type, audience, search intent, buyer stage,
   purpose, conversion goal, primary/secondary CTA, key message, critical
@@ -545,7 +552,7 @@ section parameters, so the measurement agent can use them.
 
 **Conversion microcopy.** For each form: field labels, error and validation
 messages, confirmation state, and a thank-you page prompt
-(`pages/<PAGE_ID>-thank-you-<form>/AI-DESIGN-PROMPT.md`). List anything the copywriting agent
+(`pages/<PAGE_KEY>-thank-you-<form>/`, files named the same way). List anything the copywriting agent
 did not supply as `COPY RECOMMENDATION` for user approval.
 
 **UX states.** Specify only those relevant: nav open/closed, dropdowns, form
@@ -675,7 +682,7 @@ The brand system exists, so this is Mode B only — never rerun Mode A.
    `ASSET-INVENTORY.md`, `DESIGN-DECISIONS.md` and `PAGE-DESIGN-INDEX.md`;
    reuse existing components and patterns first (Section 10.1).
 3. Design each new page to the full Section 10 workflow, ending in
-   `pages/<PAGE_ID>/AI-DESIGN-PROMPT.md`, and add a row to
+   `pages/<PAGE_KEY>/AI-DESIGN-PROMPT.md`, and add a row to
    `PAGE-DESIGN-INDEX.md`. New reusable components go into
    `COMPONENT-LIBRARY.md`.
 4. **Site-level impact.** Check whether the new page affects navigation
@@ -701,7 +708,7 @@ affects UX, suggested resolution. Recommended rewrites are labelled `COPY
 RECOMMENDATION`.
 
 Run QA yourself before delivering each page prompt; record it in
-`pages/<PAGE_ID>/DESIGN-QA.md`. Do not print a checklist.
+`pages/<PAGE_KEY>/DESIGN-QA.md`. Do not print a checklist.
 
 - **Brand:** colours, type, shapes, imagery, icons, personality.
 - **UX:** hierarchy, navigation, readability, interaction, forms, mobile,

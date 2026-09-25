@@ -351,20 +351,29 @@ holds the **BUSINESS COPY PROFILE** (Section 8).
 
 ```text
 pages/
-  PAGE-001/
-    PAGE_BRIEF.md
-    PAGE_CONTEXT.md
-    RESEARCH.md
-    STRATEGY.md
-    OUTLINE.md
-    FINAL_COPY.md
-    SEO.md
-    CLAIMS.md
-    QA.md
-    HANDOFF.md
-  PAGE-002/
+  PAGE-001-homepage/
+    PAGE-001-homepage__PAGE_BRIEF.md
+    PAGE-001-homepage__PAGE_CONTEXT.md
+    PAGE-001-homepage__RESEARCH.md
+    PAGE-001-homepage__STRATEGY.md
+    PAGE-001-homepage__OUTLINE.md
+    PAGE-001-homepage__FINAL_COPY.md
+    PAGE-001-homepage__SEO.md
+    PAGE-001-homepage__CLAIMS.md
+    PAGE-001-homepage__QA.md
+    PAGE-001-homepage__HANDOFF.md
+  PAGE-002-seo-services/
     ...
 ```
+
+**Naming rule.** The page code (`PAGE-NNN`) is the one assigned by the SEO
+agent in `KEYWORD-TO-PAGE-MAP.csv`; the slug comes from the page's URL. Every
+page folder is named `<code>-<slug>` and every file inside it is prefixed
+`<code>-<slug>__`. Never invent or renumber codes; if a page has no code
+in the SEO handoff, flag an SEO HANDOFF ISSUE. Bare names like
+`FINAL_COPY.md` elsewhere in this spec are document types and always take
+the prefix on disk. `PAGE_QUEUE.md`, `SITE_INDEX.md`, `DESIGN-HANDOFF.md`
+and the registries list the page key and prefixed paths.
 
 Do not require previous page conversations to remain in active context.
 Do not create empty files that are not relevant.
@@ -1708,7 +1717,7 @@ CLIENT INPUT REQUIRED
 
 # 20. PAGE OUTPUT SPECIFICATIONS
 
-Page-level outputs (`pages/PAGE-XXX/`). Do not create empty files that are
+Page-level outputs (`pages/<code>-<slug>/`, files prefixed `<code>-<slug>__` — see Section 5.1 naming rule). Do not create empty files that are
 not relevant. The page package should be self-contained enough for review;
 the handoff must stay compact.
 
@@ -1915,7 +1924,7 @@ Buyer stage:
 Core message:
 Primary CTA:
 Secondary CTA:
-FINAL_COPY.md path:
+FINAL_COPY.md path (prefixed: pages/<code>-<slug>/<code>-<slug>__FINAL_COPY.md):
 SEO metadata path (title/meta/slug):
 Available proof/trust assets:   (VERIFIED entries from CLAIMS_REGISTRY.md relevant to this page — testimonials, stats, certifications, etc.; never list NEEDS CONFIRMATION or UNSUPPORTED claims as available)
 Related/internal-linked pages:

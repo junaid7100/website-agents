@@ -49,9 +49,9 @@ Create `08-COPYWRITING-AGENT/` with:
 - `01-BUSINESS-RESEARCH.md` (includes a plain-language summary of the profile: business type(s), audience, conversions)
 - `02-CLEAN-KEYWORDS.csv`, `03-KEYWORD-CLUSTERS.csv`, `04-KEYWORD-TO-PAGE-MAP.csv`
 - `05-WEBSITE-PAGE-INVENTORY.md`, `06-SERP-ANALYSIS.csv`, `07-COMPETITOR-ANALYSIS.md`
-- `08-PAGE-BRIEFS/`
+- `08-PAGE-BRIEFS/` (one brief per page named `<page_id>-<slug>.md`, carried over from stage 06 unchanged)
 - `09-VOICE-OF-CUSTOMER.md`, `10-SEARCH-QUESTIONS-AND-OBJECTIONS.md`, `11-CONVERSION-REQUIREMENTS.md`
-- `12-COPYWRITING-HANDOFF.md` — states `READY` or `BLOCKED`, pages ready/blocked with reasons, missing assets, missing business facts, open confirmation items, research date, update instructions
+- `12-COPYWRITING-HANDOFF.md` — states `READY` or `BLOCKED`, pages ready/blocked with reasons (each listed by page key: code + slug), missing assets, missing business facts, open confirmation items, research date, update instructions
 
 ## Blocking conditions
 
