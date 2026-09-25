@@ -695,6 +695,30 @@ Before ending a page session:
 
 ------------------------------------------------------------------------
 
+## 7.6 Adding pages after init (expansion)
+
+If the SEO handoff gains pages after project init (an `EXPANSION` section in
+`12-COPYWRITING-HANDOFF.md`, per the SEO `EXPANSION-MODE.md`), do not rerun
+init or rebuild project-level files. Instead:
+
+1. Diff the refreshed handoff against `SEO_INPUTS.md`/`PAGE_QUEUE.md` and
+   report: new pages, pages whose brief changed, and the link-impact list.
+2. Append a `QUEUED` (or `BLOCKED`) row per new page to `PAGE_QUEUE.md`, add
+   the pages to `SITE_PLAN.md`/`SITE_INDEX.md` (status `NOT STARTED`), and
+   record new SEO inputs in `SEO_INPUTS.md`. Append new claims/proof needs
+   to `CLAIMS_REGISTRY.md`.
+3. For each already-`COMPLETE` page named in the link-impact list or whose
+   brief changed, mark it `NEEDS UPDATE` in `PAGE_QUEUE.md` with the
+   reason (e.g. "add internal link to /new-page/"). Do not reopen or
+   rewrite it until the user chooses it; updates are minimal edits, not
+   redrafts, and are re-QA'd.
+4. Resume the normal Section 7.4 flow: ask the user which page(s) to write.
+   New pages get the full Section 10 workflow; if the business copy profile
+   is affected by new facts, flag it rather than silently editing it.
+5. Update `DESIGN-HANDOFF.md` when a new or updated page reaches
+   READY FOR REVIEW / READY TO PUBLISH, noting which pages are new vs
+   changed so the design agent can act on only those.
+
 # 8. BUSINESS COPY PROFILE (ADAPTIVE BUSINESS CONTEXT)
 
 Before developing messaging, the agent adapts itself to the business.

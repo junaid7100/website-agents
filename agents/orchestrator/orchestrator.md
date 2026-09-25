@@ -66,7 +66,10 @@ conversation.
    - Phase 2 `APPROVED`, Phase 3 not `COMPLETE` → read
      `agents/ui-ux-design/AI_UX_UI_Design_to_Prompt_Agent_Spec.md` and
      continue under its instructions.
-4. If a phase was `IN PROGRESS` (not `AWAITING APPROVAL`) when the previous
+4. If all three phases are `APPROVED`/`COMPLETE` and the user wants new
+   pages, a new service/product/location, or to pursue a new opportunity,
+   go to Section 8 (Expansion Mode) instead of restarting any phase.
+5. If a phase was `IN PROGRESS` (not `AWAITING APPROVAL`) when the previous
    session ended, still just resume into that phase's own instructions —
    its file-based state (manifest / page queue) determines what's actually
    left to do, not this orchestrator's memory of the old session.
@@ -235,6 +238,9 @@ PHASE 2 — COPYWRITING: <NOT STARTED | IN PROGRESS | AWAITING APPROVAL | APPROV
 PHASE 3 — UX/UI DESIGN: <NOT STARTED | IN PROGRESS | AWAITING APPROVAL | COMPLETE>
   QA result: <PASS | REVISION REQUIRED>
 
+EXPANSIONS:
+  <NN> <date> <topic> — SEO: <status> | Copy: <pages queued/written> | Design: <status>
+
 OPEN BLOCKERS:
 - ...
 ```
@@ -275,3 +281,46 @@ OPEN BLOCKERS:
    phase (SEO pipeline, copywriting, UX/UI design) and every internal stage
    within them runs in this same continuous session — see "How this works
    (no subagent tools)" above.
+
+------------------------------------------------------------------------
+
+## 8. Expansion Mode (adding pages or opportunities after the project is done)
+
+Use when Phase 3 is `COMPLETE` (or any time after the SEO handoff exists)
+and the user wants to add a page, a new service/product/location, or chase
+a new opportunity — from the user directly, a `Future Opportunity` whose
+confirmation was answered, `08-MEASUREMENT/SEO-OPPORTUNITIES.md`, or an SEO
+HANDOFF ISSUE from copywriting or design. This is a scoped pass through the
+same three agents, not a restart. Keep the usual permission gate before
+every step.
+
+1. **Capture the request** in `STATUS.md` under EXPANSIONS (topic, trigger,
+   date). Ask only for missing facts; update `00-INTAKE.md` if business
+   facts changed (new offering, wider area) and tell the user which
+   existing outputs that makes `STALE`.
+2. **SEO (scoped).** Read
+   `agents/seo-keyword-research/00-ORCHESTRATOR/EXPANSION-MODE.md` and follow
+   it in `./01-seo-keyword-research/`: reuse existing data, research only
+   gaps, run the page-creation and cannibalisation test against existing
+   pages, then append to the page map/inventory/briefs and the
+   `08-COPYWRITING-AGENT/` handoff, with a link-impact list. Report the
+   decision per topic: `NEW PAGE`, `EXTEND EXISTING PAGE`,
+   `NO DEDICATED PAGE`, or `FUTURE OPPORTUNITY`. **Stop for approval.** If
+   no new page results, stop here.
+3. **Copywriting (append).** Read the copywriting agent and follow its
+   Section 7.6: append the new pages to `PAGE_QUEUE.md`/`SITE_INDEX.md`,
+   mark affected completed pages `NEEDS UPDATE`, then write only the pages
+   the user chooses. Update `DESIGN-HANDOFF.md` marking new vs changed
+   pages.
+4. **Design (Mode B only).** Read the UX/UI design spec and follow its
+   Section 13.1: design new pages against the existing brand system, produce
+   the minimal update prompts for navigation/related-link impact on existing
+   pages, and update `PAGE-DESIGN-INDEX.md`. Never rerun brand setup.
+5. Update `STATUS.md` (EXPANSIONS row and each phase's counts) and present
+   what was added, what existing pages need small updates, and any open
+   blockers.
+
+Rules: never rerun a whole phase for one page; never change existing URLs
+or keyword ownership without showing the user; never reopen completed pages
+except for the listed minimal updates; keep every specialist's own gates
+(research permission, checkpoints) active.

@@ -64,6 +64,10 @@ the normal entry point rather than running each stage by hand:
 
 If one stage becomes stale, rerun that stage and only downstream stages whose inputs materially changed.
 
+## Adding pages later
+
+For a new page or opportunity after handoff, use `00-ORCHESTRATOR/EXPANSION-MODE.md` (a scoped run that appends to the page map and handoff, without rerunning stages).
+
 ## Source of truth
 
 Original research files remain authoritative. Handoff folders contain copies for downstream agents.

@@ -666,6 +666,33 @@ pages to write; do not guess.
 
 ------------------------------------------------------------------------
 
+## 13.1 Adding pages after the project is complete
+
+The brand system exists, so this is Mode B only — never rerun Mode A.
+
+1. Read `DESIGN-HANDOFF.md` and design only pages marked new or changed.
+2. Load `BRAND-GUIDE.md`, `DESIGN-SYSTEM.md`, `COMPONENT-LIBRARY.md`,
+   `ASSET-INVENTORY.md`, `DESIGN-DECISIONS.md` and `PAGE-DESIGN-INDEX.md`;
+   reuse existing components and patterns first (Section 10.1).
+3. Design each new page to the full Section 10 workflow, ending in
+   `pages/<PAGE_ID>/AI-DESIGN-PROMPT.md`, and add a row to
+   `PAGE-DESIGN-INDEX.md`. New reusable components go into
+   `COMPONENT-LIBRARY.md`.
+4. **Site-level impact.** Check whether the new page affects navigation
+   (menu, dropdowns, footer), related-content modules and internal links on
+   existing pages. Produce a short `EXPANSION-IMPACT.md` in
+   `project-state/` listing each existing page that needs a small update
+   and what changes. Issue a minimal-update prompt (only the affected
+   header/footer/module) rather than a full page redesign, and mark the
+   page `UPDATE PENDING` in `PAGE-DESIGN-INDEX.md`.
+5. Anything the brand system cannot accommodate (a new page type, a new
+   kind of proof) becomes a Design System Change Proposal (Section 16), not
+   a silent change.
+6. Ask the user which of the new/updated pages to write first, as at the
+   normal checkpoint.
+
+------------------------------------------------------------------------
+
 # 14. Copy/Design Conflicts and Internal QA
 
 If approved copy creates a genuine UX issue, never shorten, hide, remove or
