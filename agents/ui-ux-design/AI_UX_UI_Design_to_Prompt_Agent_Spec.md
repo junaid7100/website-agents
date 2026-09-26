@@ -668,7 +668,7 @@ briefly:
   and which are excluded and why;
 - anything flagged (Section 14).
 
-When the project folder is a git repo (growth-orchestrator Section 9), commit and tag `cp-design-brand` at this checkpoint and `cp-design-<PAGE_KEY>` after each page, adding each to `CHECKPOINTS.md`. After a rollback, re-read `PAGE-DESIGN-INDEX.md` and continue from the restored state.
+When the growth-orchestrator safety net is not `None` (its Section 9.2; pushed too under Full), commit and tag `cp-design-brand` at this checkpoint and `cp-design-<PAGE_KEY>` after each page, adding each to `CHECKPOINTS.md`. After a rollback, re-read `PAGE-DESIGN-INDEX.md` and continue from the restored state.
 
 Do not write any page's files until the user approves. The user chooses which
 pages to write; do not guess.
