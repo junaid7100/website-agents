@@ -68,7 +68,7 @@ conversation.
      continue under its instructions.
 4. If all three phases are `APPROVED`/`COMPLETE` and the user wants new
    pages, a new service/product/location, or to pursue a new opportunity,
-   go to Section 8 (Expansion Mode) instead of restarting any phase.
+   go to Section 8 (Expansion Mode) instead of restarting any phase. If they ask to undo or go back to an earlier point, go to Section 9 (Checkpoints and Rollback).
 5. If a phase was `IN PROGRESS` (not `AWAITING APPROVAL`) when the previous
    session ended, still just resume into that phase's own instructions —
    its file-based state (manifest / page queue) determines what's actually
@@ -148,7 +148,7 @@ Before starting Phase 1, gather (ask the user only for what's missing):
 - Required pages / project constraints / launch requirements, if known
 
 Do not invent missing facts. Write the confirmed brief to
-`00-INTAKE.md` in the project folder.
+`00-INTAKE.md` in the project folder. Set up the project's git checkpoints first (Section 9.1) and tag `cp-00-intake` once the intake is saved.
 
 Then present the intake summary to the user and **stop — wait for explicit
 permission** before moving into Phase 1.
@@ -289,7 +289,8 @@ OPEN BLOCKERS:
    to the user verbatim.
 5. Never fabricate research, copy, or design decisions on a specialist's
    behalf to "keep things moving."
-6. Keep `STATUS.md` current after every phase (and encourage each
+6. Commit and tag a checkpoint at every approval gate (Section 9) and keep
+   `STATUS.md` current after every phase (and encourage each
    specialist's own state file to stay current after every stage/page) so
    the project can be resumed in a fresh session at any checkpoint without
    replaying the whole conversation.
@@ -351,3 +352,60 @@ Rules: never rerun a whole phase for one page; never change existing URLs
 or keyword ownership without showing the user; never reopen completed pages
 except for the listed minimal updates; keep every specialist's own gates
 (research permission, checkpoints) active.
+
+------------------------------------------------------------------------
+
+## 9. Checkpoints and Rollback
+
+Approval gates are also **restore points**. The project folder is its own git
+repository (never the website-agents repo), so any checkpoint can be undone.
+
+### 9.1 Creating checkpoints
+
+- **Setup:** at project start (new project, before Section 2 writes anything),
+  run `git init` in the project folder if it isn't already a repo, and add a
+  `.gitignore` for OS junk (e.g. `.DS_Store`). Tell the user checkpoints are
+  being kept. If git is unavailable, say so and continue without rollback
+  support — never pretend it exists.
+- **At every approval gate** (intake, each phase, each SEO stage, each
+  copywriting page, each design page, each expansion step), after updating the
+  state files (`STATUS.md`, `PROJECT-MANIFEST.md`, `PAGE_QUEUE.md`, ...): stage
+  everything, commit, and tag. Tag names are short and stable:
+  `cp-00-intake`, `cp-seo-01-market-seeds`, `cp-seo-06-page-architecture`,
+  `cp-copy-PAGE-004-homepage`, `cp-design-brand`, `cp-design-PAGE-004-homepage`,
+  `cp-exp-02-<slug>-seo`. The commit message states what the checkpoint
+  contains. Do this before asking the user to approve, so the work under review
+  is what's saved. Commit only inside the project folder.
+- Add each checkpoint to a `CHECKPOINTS.md` in the project root: tag, date,
+  what it covers, phase/status at that point.
+
+### 9.2 Rolling back
+
+When the user asks to undo, go back, or "restart from checkpoint X":
+
+1. Show `CHECKPOINTS.md` if they haven't named one; confirm the target.
+2. **Preview, don't act:** run `git diff --stat <tag>` and
+   `git clean -nd`, and tell the user exactly which files would be reverted and
+   which created files would be deleted. Flag anything expensive to redo
+   (raw Semrush/Google data, Keyword Planner exports) and offer **"roll back
+   but keep raw research"** as an option.
+3. Wait for an explicit yes. This is a destructive action; approval for one
+   rollback never carries to another.
+4. **Safety net first:** commit the current state and tag it
+   `rollback-backup-<date>-<n>` so the rollback itself can be undone.
+5. Restore: `git reset --hard <tag>` and `git clean -fd` (excluding any raw
+   data the user chose to keep — restore those from the backup tag).
+6. **Repair state:** set `STATUS.md`, `PROJECT-MANIFEST.md`, `PAGE_QUEUE.md`,
+   `SITE_INDEX.md` and `PAGE-DESIGN-INDEX.md` to match the restored point
+   (they come back with the files); mark anything that was derived from
+   discarded work as `STALE`. Note the rollback in `CHECKPOINTS.md`.
+7. Report what was restored and where work resumes, then stop at the
+   checkpoint's own gate.
+
+### 9.3 Limits — tell the user
+
+Rollback restores files only. It cannot refund Semrush/API units, un-send
+anything the client has seen, or change external systems. Rolling back past
+an SEO stage means downstream copy and design that depended on it are no
+longer valid; list them before the user confirms. Never rewrite or delete
+history on a remote unless the user asks.

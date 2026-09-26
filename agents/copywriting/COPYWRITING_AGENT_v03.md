@@ -691,6 +691,8 @@ persistent files so a later multi-page session stays consistent.
 
 ## 7.5 Session-end checklist
 
+When the project folder is a git repo (growth-orchestrator Section 9), commit and tag `cp-copy-<page key>` before asking for the next page approval, and add it to `CHECKPOINTS.md`. After a rollback, re-read `PAGE_QUEUE.md`: pages whose files were removed return to `QUEUED`.
+
 Before ending a page session:
 
 1. Save the page outputs.

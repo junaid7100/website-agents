@@ -115,6 +115,8 @@ Funnel order the gates enforce: seeds → discovery → filtered candidates → 
 
 If any stage reports `BLOCKED`, stop the pipeline at that point, record the blocker in the manifest, and surface it to the user rather than continuing downstream stages on incomplete input.
 
+**Checkpoints.** When run under the growth-orchestrator, the project folder is a git repo: after each stage's outputs and manifest are updated, and before asking for permission to continue, commit and tag `cp-seo-<NN>-<stage>` and add it to `CHECKPOINTS.md` (see the orchestrator's Section 9). When a rollback restores an earlier stage, mark later stage outputs `STALE` until re-run. Standalone, skip this unless the user has git set up.
+
 **Adding pages after the handoff.** When the user later wants a new page or opportunity, do not rerun stages; follow `EXPANSION-MODE.md` (scoped research, page-creation test against existing pages, append to the map and handoff, link-impact list).
 
 `08-MEASUREMENT` is not part of this pipeline — it runs post-launch, run separately once the site exists and tracking data is available.
